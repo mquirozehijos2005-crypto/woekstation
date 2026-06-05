@@ -1,0 +1,27 @@
+/* Cliente: Pizzería Don Beto (restaurante) — edita SOLO este archivo. */
+window.NEGOCIO = {
+  nombre: 'Pizzería Don Beto',
+  sector: 'Restaurante',
+  emoji: '🍕',
+  color: '#e11d48',
+  colorOscuro: '#431407',
+  telefono: '+56900000000',
+  whatsapp: '56900000000',
+  direccion: 'Av. Siempre Viva 123, Santiago',
+  horario: 'Abierto 12:00 a 23:30',
+  badge: 'DELIVERY EN 30 MIN',
+  tagline: 'Pizzas artesanales hechas a mano',
+  descripcion: 'Masa madre fermentada 48 horas, ingredientes frescos y harto sabor. Pide por teléfono y nuestra recepcionista IA toma tu pedido al tiro.',
+  ctaSecundario: 'Ver el menú',
+  stats: [{ n: '⭐ 4.9', label: '320 reseñas' }, { n: '🛵', label: 'Delivery propio' }, { n: '24/7', label: 'IA al teléfono' }],
+  accion: 'pedido',
+  catalogoTitulo: 'Nuestro menú',
+  catalogo: [
+    { nombre: 'Pizza Margarita', desc: 'Tomate, mozzarella y albahaca', precio: 8990, emoji: '🍕' },
+    { nombre: 'Pizza Pepperoni', desc: 'Doble pepperoni y mozzarella', precio: 10990, emoji: '🍕' },
+    { nombre: 'Pizza Cuatro Quesos', desc: 'Mozzarella, azul, parmesano y cabra', precio: 11990, emoji: '🧀' },
+    { nombre: 'Pizza Vegetariana', desc: 'Pimentón, champiñón, cebolla, aceitunas', precio: 10490, emoji: '🥬' },
+    { nombre: 'Empanada de queso', desc: 'Crujiente, recién horneada', precio: 2500, emoji: '🥟' },
+    { nombre: 'Bebida 1.5L', desc: 'Línea Coca-Cola', precio: 2990, emoji: '🥤' },
+  ],
+};

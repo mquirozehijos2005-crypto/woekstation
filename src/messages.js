@@ -10,6 +10,7 @@ function formatearPedido(p) {
     .join('\n');
   return [
     'NUEVO PEDIDO',
+    p.negocio ? `Negocio: ${p.negocio}` : '',
     `Cliente: ${p.cliente_nombre || 's/n'}`,
     `Telefono: ${p.cliente_telefono || 's/n'}`,
     `Entrega: ${p.tipo_entrega || 's/n'}${p.direccion ? ' - ' + p.direccion : ''}`,
@@ -24,6 +25,7 @@ function formatearPedido(p) {
 function formatearCita(c) {
   return [
     'NUEVA CITA',
+    c.negocio ? `Negocio: ${c.negocio}` : '',
     `Paciente: ${c.paciente_nombre || c.nombre || 's/n'}`,
     `Telefono: ${c.paciente_telefono || c.telefono || 's/n'}`,
     `Servicio: ${c.servicio || 's/n'}`,

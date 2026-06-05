@@ -22,9 +22,11 @@ Luego abre en el navegador:
 | URL | Qué es |
 |-----|--------|
 | http://localhost:3000/ | Sitio de la **agencia** (para vender) |
-| http://localhost:3000/restaurante | Demo restaurante (toma de pedidos) |
+| http://localhost:3000/restaurante | Demo restaurante (pedidos) |
+| http://localhost:3000/comida-rapida | Demo comida rápida (pedidos) |
+| http://localhost:3000/farmacia | Demo farmacia (pedidos/despacho) |
 | http://localhost:3000/clinica | Demo clínica (agenda de citas) |
-| http://localhost:3000/cerrajero | Demo cerrajero (urgencias) |
+| http://localhost:3000/cerrajero | Demo oficios (urgencias) |
 | http://localhost:3000/dashboard | **Panel de gestión** en vivo |
 
 > Los formularios de todas las webs envían los datos al backend y aparecen en el
@@ -49,34 +51,58 @@ woekstation/
 │
 ├── public/                   ← todo lo que se sirve por web
 │   ├── index.html  main.js   ← sitio de la agencia
-│   ├── dashboard.html        ← panel de gestión
-│   ├── restaurante/          ← demo (index.html + app.js)
-│   ├── clinica/              ← demo
-│   └── cerrajero/            ← demo
+│   ├── dashboard.html        ← panel de gestión (multi-cliente)
+│   ├── plantilla/            ← MOTOR de la plantilla (template.js) — no se toca
+│   ├── restaurante/          ← cliente ejemplo (index.html + config.js)
+│   ├── comida-rapida/        ← cliente ejemplo
+│   ├── farmacia/             ← cliente ejemplo
+│   ├── clinica/              ← cliente ejemplo
+│   └── cerrajero/            ← cliente ejemplo
 │
-├── agente-voz-ia/            ← el cerebro del agente de voz
-│   ├── prompt-sistema.md     ← guion RESTAURANTE (pedidos)
-│   ├── prompt-clinica.md     ← guion CLÍNICA (citas)
-│   ├── prompt-cerrajero.md   ← guion CERRAJERO (urgencias)
-│   ├── vapi-config.json      ← configuración + herramientas (tools)
-│   └── guia-configuracion.md ← paso a paso para montarlo
+├── agente-voz-ia/            ← guiones del agente de voz (uno por rubro)
+│   ├── prompt-sistema.md     ← restaurante / comida rápida (pedidos)
+│   ├── prompt-farmacia.md    ← farmacia (pedidos/despacho)
+│   ├── prompt-clinica.md     ← clínica (citas)
+│   ├── prompt-cerrajero.md   ← oficios (urgencias)
+│   ├── vapi-config.json
+│   └── guia-configuracion.md
 │
 ├── marca/                    ← identidad de marca (logo SVG + guía)
 │
-├── documentos-negocio/       ← precios CLP, prospección, propuesta y contrato
+├── documentos-negocio/       ← precios CLP, prospección, propuesta, contrato
+│   └── guia-entrega-cliente.md  ← ⭐ cómo montar y entregar a cada empresa
 │
 └── COMO-FUNCIONA.md          ← guía end-to-end para conectar todo
 ```
 
 ---
 
-## Las 3 circunstancias cubiertas
+## 🏭 Crear un cliente nuevo (sin programar)
 
-| Circunstancia | Demo web | Guion de IA | Endpoint API |
-|---------------|----------|-------------|--------------|
-| Restaurante (pedidos) | `/restaurante` | `prompt-sistema.md` | `POST /api/pedido` |
-| Clínica (citas) | `/clinica` | `prompt-clinica.md` | `POST /api/cita` |
-| Cerrajero (urgencias) | `/cerrajero` | `prompt-cerrajero.md` | `POST /api/urgencia` |
+Eres la **agencia**: produces un sitio por cada empresa cliente editando **un solo archivo**.
+
+1. Copia una carpeta de cliente parecida al rubro (ej. `public/restaurante`).
+2. Renómbrala con el cliente (ej. `public/pizzeria-luigi`).
+3. Edita **solo** su `config.js`: nombre, colores, teléfono, WhatsApp, catálogo y
+   `accion` (`pedido` / `cita` / `urgencia` / `lead`).
+4. Listo: el sitio queda armado por el motor (`plantilla/template.js`). No tocas código.
+
+El paso a paso completo (IA, número, despliegue, cobro) está en
+**`documentos-negocio/guia-entrega-cliente.md`**.
+
+---
+
+## Rubros y tipos de acción
+
+| Rubro | Demo | Acción de la IA | Guion | Endpoint |
+|-------|------|-----------------|-------|----------|
+| Restaurante | `/restaurante` | Toma de pedidos | `prompt-sistema.md` | `/api/pedido` |
+| Comida rápida | `/comida-rapida` | Toma de pedidos | `prompt-sistema.md` | `/api/pedido` |
+| Farmacia | `/farmacia` | Pedido / despacho | `prompt-farmacia.md` | `/api/pedido` |
+| Clínica / salud | `/clinica` | Agenda de citas | `prompt-clinica.md` | `/api/cita` |
+| Oficios / urgencias | `/cerrajero` | Captura de leads | `prompt-cerrajero.md` | `/api/urgencia` |
+
+> Se adapta a más rubros (veterinarias, peluquerías, talleres...) cambiando el `config.js`.
 
 ---
 

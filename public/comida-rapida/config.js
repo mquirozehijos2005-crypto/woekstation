@@ -1,0 +1,27 @@
+/* Cliente: Burger House (comida rápida) — edita SOLO este archivo. */
+window.NEGOCIO = {
+  nombre: 'Burger House',
+  sector: 'Comida rápida',
+  emoji: '🍔',
+  color: '#f97316',
+  colorOscuro: '#7c2d12',
+  telefono: '+56900000000',
+  whatsapp: '56900000000',
+  direccion: 'Av. Central 456, Santiago',
+  horario: 'Abierto 12:00 a 00:00',
+  badge: 'DELIVERY RÁPIDO',
+  tagline: 'Las hamburguesas que la rompen',
+  descripcion: 'Carne 100% vacuno, pan brioche y papas crujientes. Pide por teléfono y nuestra IA toma tu pedido al instante, incluso a tope de gente.',
+  ctaSecundario: 'Ver el menú',
+  stats: [{ n: '⭐ 4.8', label: '900+ pedidos' }, { n: '🔥', label: 'A la parrilla' }, { n: '24/7', label: 'IA al teléfono' }],
+  accion: 'pedido',
+  catalogoTitulo: 'Nuestro menú',
+  catalogo: [
+    { nombre: 'Clásica', desc: 'Carne, queso, lechuga, tomate', precio: 5990, emoji: '🍔' },
+    { nombre: 'Doble Cheese', desc: 'Doble carne y doble cheddar', precio: 7990, emoji: '🍔' },
+    { nombre: 'Crispy Chicken', desc: 'Pollo crujiente y salsa de la casa', precio: 6990, emoji: '🍗' },
+    { nombre: 'Papas grandes', desc: 'Crujientes, porción XL', precio: 3490, emoji: '🍟' },
+    { nombre: 'Nuggets x6', desc: 'Con salsa a elección', precio: 3990, emoji: '🍗' },
+    { nombre: 'Bebida lata', desc: 'Línea Coca-Cola', precio: 1990, emoji: '🥤' },
+  ],
+};

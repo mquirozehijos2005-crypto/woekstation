@@ -47,6 +47,7 @@
 
     const render = {
       pedidos: () => DATOS.pedidos.length ? DATOS.pedidos.map(p => tarjeta(`
+        ${p.negocio ? `<span class="inline-block text-xs font-semibold text-slate-600 bg-slate-100 rounded-full px-2 py-0.5 mb-2">${p.negocio}</span>` : ''}
         <div class="flex justify-between items-start"><div><p class="font-bold">${p.cliente_nombre || 'Sin nombre'} <span class="text-xs font-normal text-slate-400">${p.id}</span></p>
         <p class="text-sm text-slate-500">${p.cliente_telefono || ''} · ${p.tipo_entrega || ''} ${p.direccion ? '· ' + p.direccion : ''}</p></div>
         <span class="text-emerald-600 font-extrabold">${clp(p.total_clp)}</span></div>
@@ -55,6 +56,7 @@
         .join('') : vacio('No hay pedidos aún.'),
 
       citas: () => DATOS.citas.length ? DATOS.citas.map(c => tarjeta(`
+        ${c.negocio ? `<span class="inline-block text-xs font-semibold text-slate-600 bg-slate-100 rounded-full px-2 py-0.5 mb-2">${c.negocio}</span>` : ''}
         <p class="font-bold">${c.paciente_nombre || c.nombre || 'Sin nombre'} <span class="text-xs font-normal text-slate-400">${c.id}</span></p>
         <p class="text-sm text-slate-500">${c.servicio || ''} · ${c.profesional || 'cualquiera'}</p>
         <p class="text-sm text-slate-600 mt-1">${c.fecha || 's/f'} ${c.hora || ''} · ${c.paciente_telefono || c.telefono || ''}</p>
@@ -62,6 +64,7 @@
         .join('') : vacio('No hay citas aún.'),
 
       urgencias: () => DATOS.urgencias.length ? DATOS.urgencias.map(u => tarjeta(`
+        ${u.negocio ? `<span class="inline-block text-xs font-semibold text-slate-600 bg-slate-100 rounded-full px-2 py-0.5 mb-2">${u.negocio}</span>` : ''}
         <div class="flex justify-between items-start"><div><p class="font-bold">${u.cliente_nombre || u.nombre || 'Sin nombre'} <span class="text-xs font-normal text-slate-400">${u.id}</span></p>
         <p class="text-sm text-slate-500">${u.tipo_problema || u.tipo || ''} · ${u.comuna || ''}</p></div>
         <span class="text-xs font-bold px-2 py-1 rounded-full bg-amber-100 text-amber-700">${u.nivel_urgencia || u.urgencia || ''}</span></div>

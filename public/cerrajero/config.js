@@ -1,0 +1,27 @@
+/* Cliente: Cerraj24 (cerrajería / oficios de urgencia) — edita SOLO este archivo. */
+window.NEGOCIO = {
+  nombre: 'Cerraj24',
+  sector: 'Cerrajería de urgencia',
+  emoji: '🔧',
+  color: '#f59e0b',
+  colorOscuro: '#111827',
+  telefono: '+56900000000',
+  whatsapp: '56900000000',
+  direccion: 'Región Metropolitana',
+  horario: 'Atención 24/7',
+  badge: 'ATENCIÓN 24/7',
+  tagline: 'Cerrajero de urgencia en minutos',
+  descripcion: 'Apertura de puertas, autos y cajas fuertes. Cambio e instalación de cerraduras. Llegamos rápido a toda la ciudad, de día o de noche.',
+  ctaSecundario: 'Pedir que me llamen',
+  stats: [{ n: '24/7', label: 'sin feriados' }, { n: '~20 min', label: 'de llegada' }, { n: '⭐ 4.9', label: '500+ trabajos' }],
+  accion: 'urgencia',
+  catalogoTitulo: 'Servicios de urgencia',
+  accionTitulo: 'Solicita atención ahora',
+  accionTexto: 'Déjanos tus datos y te llamamos de inmediato. O llama directo: nuestra asistente IA toma tu solicitud al instante.',
+  catalogo: [
+    { nombre: 'Apertura de puerta', desc: 'Casa o departamento, sin daños', emoji: '🚪' },
+    { nombre: 'Apertura de auto', desc: 'Llaves dentro del vehículo', emoji: '🚗' },
+    { nombre: 'Cambio de cerradura', desc: 'Más seguridad para tu hogar', emoji: '🔑' },
+    { nombre: 'Caja fuerte', desc: 'Apertura y mantención', emoji: '🔒' },
+  ],
+};
