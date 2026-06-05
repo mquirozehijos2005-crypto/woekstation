@@ -12,28 +12,27 @@ arrancar **sin presupuesto publicitario**.
 ## ¿Qué hay en este kit?
 
 ```
-agencia-aaa/
+woekstation/
 ├── README.md                     ← estás aquí (guía maestra)
+├── COMO-FUNCIONA.md              ← ⭐ cómo conectar todo y que funcione de verdad
 │
 ├── web-agencia/                  ← TU sitio web para vender el servicio
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
 │
-├── web-demo-restaurante/         ← Demo de nicho para mostrar a prospectos
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
+├── web-demo-restaurante/         ← Demo nicho 1: pedidos (🍕)
+├── web-demo-clinica/             ← Demo nicho 2: citas (🦷)
+├── web-demo-cerrajero/           ← Demo nicho 3: urgencias (🔧)
 │
 ├── agente-voz-ia/                ← El cerebro del agente de voz
-│   ├── prompt-sistema.md         ← copia/pega esto en Vapi o Retell
+│   ├── prompt-sistema.md         ← guion para RESTAURANTE (pedidos)
+│   ├── prompt-clinica.md         ← guion para CLÍNICA (citas)
+│   ├── prompt-cerrajero.md       ← guion para CERRAJERO (urgencias)
 │   ├── vapi-config.json          ← configuración + herramientas (tools)
 │   └── guia-configuracion.md     ← paso a paso para montarlo
 │
 ├── backend-integracion/          ← Conecta la llamada con tu base de datos y WhatsApp
 │   ├── server.js                 ← servidor Node (sin dependencias externas)
 │   ├── package.json
-│   ├── public/dashboard.html     ← panel para ver los pedidos
+│   ├── public/dashboard.html     ← panel con pestañas (pedidos/citas/urgencias)
 │   └── README.md
 │
 └── documentos-negocio/
@@ -41,6 +40,16 @@ agencia-aaa/
     ├── scripts-prospeccion.md    ← cómo conseguir tus primeros 3 clientes
     └── plan-de-lanzamiento-30-dias.md
 ```
+
+## Las 3 circunstancias cubiertas
+
+| Circunstancia | Web demo | Guion de IA | Endpoint |
+|---------------|----------|-------------|----------|
+| 🍕 Restaurante (pedidos) | `web-demo-restaurante/` | `prompt-sistema.md` | `/api/pedido` |
+| 🦷 Clínica (citas) | `web-demo-clinica/` | `prompt-clinica.md` | `/api/cita` |
+| 🔧 Cerrajero (urgencias) | `web-demo-cerrajero/` | `prompt-cerrajero.md` | `/api/urgencia` |
+
+> 👉 **Para hacer funcionar todo de punta a punta, lee `COMO-FUNCIONA.md`.**
 
 ---
 

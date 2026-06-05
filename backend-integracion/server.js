@@ -32,10 +32,11 @@ const PUBLIC_DIR = path.join(__dirname, 'public');
 
 // ---------- "Base de datos" simple en archivo JSON ----------
 function leerDB() {
+  const vacio = { pedidos: [], citas: [], urgencias: [], leads: [] };
   try {
-    return JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
+    return { ...vacio, ...JSON.parse(fs.readFileSync(DB_FILE, 'utf8')) };
   } catch {
-    return { pedidos: [], leads: [] };
+    return vacio;
   }
 }
 function guardarDB(db) {
@@ -140,6 +141,36 @@ function formatearPedido(p) {
   ].filter(Boolean).join('\n');
 }
 
+// ---------- Formato del mensaje de cita (clínica) ----------
+function formatearCita(c) {
+  return [
+    '🦷 NUEVA CITA',
+    `Paciente: ${c.paciente_nombre || c.nombre || 's/n'}`,
+    `Teléfono: ${c.paciente_telefono || c.telefono || 's/n'}`,
+    `Servicio: ${c.servicio || 's/n'}`,
+    `Profesional: ${c.profesional || 'cualquiera'}`,
+    `Día/Hora: ${c.fecha || 's/f'} ${c.hora || ''}`.trim(),
+    c.es_paciente_nuevo ? 'Paciente: nuevo' : '',
+    c.notas ? `Notas: ${c.notas}` : '',
+  ].filter(Boolean).join('\n');
+}
+
+// ---------- Formato del mensaje de urgencia (cerrajero/oficios) ----------
+function formatearUrgencia(u) {
+  const nivel = (u.nivel_urgencia || u.urgencia || '').toLowerCase();
+  const alerta = nivel.includes('urg') || nivel.includes('ahora') ? '🚨🚨 ' : '🔧 ';
+  return [
+    `${alerta}NUEVA URGENCIA`,
+    `Problema: ${u.tipo_problema || u.tipo || 's/n'}`,
+    `Ubicación: ${u.comuna || 's/n'}${u.direccion ? ' — ' + u.direccion : ''}`,
+    `Urgencia: ${u.nivel_urgencia || u.urgencia || 's/n'}`,
+    `Cliente: ${u.cliente_nombre || u.nombre || 's/n'}`,
+    `Teléfono: ${u.cliente_telefono || u.telefono || 's/n'}`,
+    u.notas ? `Notas: ${u.notas}` : '',
+    '👉 Llamar al cliente AHORA',
+  ].filter(Boolean).join('\n');
+}
+
 // ---------- Validación opcional del secreto ----------
 function secretoValido(req) {
   if (!WEBHOOK_SECRET) return true; // si no se configuró, no se valida (modo prueba)
@@ -191,6 +222,38 @@ const server = http.createServer(async (req, res) => {
     });
   }
 
+  // --- API: agendar cita (clínica) ---
+  if (req.method === 'POST' && pathname === '/api/cita') {
+    if (!secretoValido(req)) return enviarJSON(res, 401, { error: 'secreto inválido' });
+    const body = await leerBody(req);
+    const datos = body.message?.toolCalls?.[0]?.function?.arguments || body.arguments || body;
+    const cita = { id: 'CITA-' + Date.now(), fecha_registro: new Date().toISOString(), estado: 'nueva', ...datos };
+    const db = leerDB();
+    db.citas.unshift(cita);
+    guardarDB(db);
+    await avisarAlDueno(formatearCita(cita));
+    console.log('✅ Cita registrada:', cita.id);
+    return enviarJSON(res, 200, {
+      result: `Cita ${cita.id} agendada para ${cita.fecha || 'coordinar'} ${cita.hora || ''}.`.trim(),
+    });
+  }
+
+  // --- API: registrar urgencia (cerrajero / oficios) ---
+  if (req.method === 'POST' && pathname === '/api/urgencia') {
+    if (!secretoValido(req)) return enviarJSON(res, 401, { error: 'secreto inválido' });
+    const body = await leerBody(req);
+    const datos = body.message?.toolCalls?.[0]?.function?.arguments || body.arguments || body;
+    const urgencia = { id: 'URG-' + Date.now(), fecha: new Date().toISOString(), estado: 'nueva', ...datos };
+    const db = leerDB();
+    db.urgencias.unshift(urgencia);
+    guardarDB(db);
+    await avisarAlDueno(formatearUrgencia(urgencia));
+    console.log('🚨 Urgencia registrada:', urgencia.id);
+    return enviarJSON(res, 200, {
+      result: `Solicitud ${urgencia.id} registrada. El técnico llamará en minutos.`,
+    });
+  }
+
   // --- API: registrar lead (desde la web de la agencia) ---
   if (req.method === 'POST' && pathname === '/api/lead') {
     const body = await leerBody(req);
@@ -229,8 +292,10 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`\n🚀 Backend NexVoz corriendo en http://localhost:${PORT}`);
-  console.log(`   Dashboard:      http://localhost:${PORT}/dashboard.html`);
-  console.log(`   Webhook pedido: POST http://localhost:${PORT}/api/pedido`);
+  console.log(`   Dashboard:        http://localhost:${PORT}/dashboard.html`);
+  console.log(`   Pedido (resto):   POST /api/pedido`);
+  console.log(`   Cita (clínica):   POST /api/cita`);
+  console.log(`   Urgencia (oficio):POST /api/urgencia`);
   const notif = process.env.TELEGRAM_BOT_TOKEN ? 'Telegram' : process.env.TWILIO_ACCOUNT_SID ? 'WhatsApp/Twilio' : 'NINGUNA (modo simulado)';
-  console.log(`   Notificaciones: ${notif}\n`);
+  console.log(`   Notificaciones:   ${notif}\n`);
 });

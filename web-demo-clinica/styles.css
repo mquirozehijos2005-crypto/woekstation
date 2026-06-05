@@ -1,0 +1,7 @@
+/* Estilos demo clínica (complemento a Tailwind CDN) */
+html { scroll-behavior: smooth; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #0891b2;
+  outline-offset: 2px;
+}

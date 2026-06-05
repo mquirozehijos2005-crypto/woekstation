@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Sonrisa · Dental · Agenda tu hora online</title>
+  <meta name="description" content="Clínica dental: limpieza, ortodoncia e implantes. Agenda tu hora online o por teléfono con atención inmediata." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { salud:{50:'#ecfeff',100:'#cffafe',500:'#06b6d4',600:'#0891b2',700:'#0e7490',900:'#164e63'} },
+      fontFamily: { sans:['Inter','system-ui','sans-serif'] }
+    } } }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans text-slate-800 bg-white">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+    <nav class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#" class="font-extrabold text-xl text-salud-700">🦷 Clínica Sonrisa</a>
+      <div class="hidden sm:flex gap-6 text-sm font-medium text-slate-600">
+        <a href="#servicios" class="hover:text-salud-600">Servicios</a>
+        <a href="#equipo" class="hover:text-salud-600">Equipo</a>
+        <a href="#agendar" class="hover:text-salud-600">Agendar</a>
+      </div>
+      <a href="#agendar" class="rounded-full bg-salud-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-salud-700">Agendar hora</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-b from-salud-50 to-white">
+    <div class="max-w-5xl mx-auto px-5 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-block bg-salud-500/10 text-salud-700 text-xs font-bold px-3 py-1 rounded-full">ATENCIÓN EL MISMO DÍA</span>
+        <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight text-salud-900">Tu mejor sonrisa <span class="text-salud-600">empieza hoy</span></h1>
+        <p class="mt-4 text-lg text-slate-600">Odontología general, ortodoncia e implantes. Agenda en segundos por la web o llámanos: nuestra recepcionista IA reserva tu hora al instante, incluso fuera del horario.</p>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#agendar" class="rounded-full bg-salud-600 text-white px-7 py-3.5 text-center font-semibold hover:bg-salud-700 shadow-lg shadow-salud-600/20">Agendar mi hora</a>
+          <a href="tel:+56900000000" class="rounded-full border border-slate-300 px-7 py-3.5 text-center font-semibold text-slate-700 hover:border-salud-600 hover:text-salud-600">📞 Llamar</a>
+        </div>
+        <div class="mt-7 flex gap-6 text-sm text-slate-500">
+          <div><span class="block text-2xl font-extrabold text-salud-900">+15</span> años</div>
+          <div><span class="block text-2xl font-extrabold text-salud-900">⭐ 4.9</span> pacientes felices</div>
+          <div><span class="block text-2xl font-extrabold text-salud-900">24/7</span> agenda online</div>
+        </div>
+      </div>
+      <div class="aspect-square rounded-3xl bg-gradient-to-br from-salud-500 to-salud-700 shadow-2xl flex items-center justify-center text-[10rem]">🦷</div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-16">
+    <div class="max-w-5xl mx-auto px-5">
+      <h2 class="text-3xl font-extrabold text-center text-salud-900">Nuestros servicios</h2>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><p class="text-4xl">🪥</p><h3 class="mt-3 font-bold">Limpieza y prevención</h3><p class="mt-1 text-sm text-slate-500">Desde $25.000</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><p class="text-4xl">😁</p><h3 class="mt-3 font-bold">Ortodoncia / brackets</h3><p class="mt-1 text-sm text-slate-500">Evaluación gratis</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><p class="text-4xl">🦷</p><h3 class="mt-3 font-bold">Implantes dentales</h3><p class="mt-1 text-sm text-slate-500">Planes a tu medida</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><p class="text-4xl">✨</p><h3 class="mt-3 font-bold">Blanqueamiento</h3><p class="mt-1 text-sm text-slate-500">Resultados visibles</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><p class="text-4xl">🩺</p><h3 class="mt-3 font-bold">Urgencias dentales</h3><p class="mt-1 text-sm text-slate-500">Atención el mismo día</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm"><p class="text-4xl">👶</p><h3 class="mt-3 font-bold">Odontopediatría</h3><p class="mt-1 text-sm text-slate-500">Para los más chicos</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section id="equipo" class="py-16 bg-salud-50">
+    <div class="max-w-4xl mx-auto px-5 text-center">
+      <h2 class="text-3xl font-extrabold text-salud-900">Equipo profesional</h2>
+      <p class="mt-3 text-slate-600">Especialistas con años de experiencia y trato cercano. Tu comodidad es nuestra prioridad.</p>
+      <div class="mt-8 grid sm:grid-cols-3 gap-5">
+        <div class="rounded-2xl bg-white p-6 shadow-sm"><div class="text-5xl">👩‍⚕️</div><p class="mt-3 font-bold">Dra. Paula Soto</p><p class="text-sm text-slate-500">Ortodoncia</p></div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm"><div class="text-5xl">👨‍⚕️</div><p class="mt-3 font-bold">Dr. Marco Díaz</p><p class="text-sm text-slate-500">Implantología</p></div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm"><div class="text-5xl">👩‍⚕️</div><p class="mt-3 font-bold">Dra. Ana Vera</p><p class="text-sm text-slate-500">Odontología general</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDAR -->
+  <section id="agendar" class="py-16">
+    <div class="max-w-2xl mx-auto px-5">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-salud-900">Agenda tu hora</h2>
+        <p class="mt-2 text-slate-600">Completa el formulario y confirmamos tu cita, o llama y nuestra recepcionista IA la agenda al instante.</p>
+      </div>
+      <form id="form-cita" class="mt-8 bg-white rounded-3xl p-6 shadow-2xl border border-slate-100">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium mb-1">Servicio</label>
+            <select name="servicio" class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-salud-600">
+              <option>Limpieza / control</option>
+              <option>Ortodoncia (evaluación)</option>
+              <option>Implantes (evaluación)</option>
+              <option>Blanqueamiento</option>
+              <option>Urgencia dental</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Profesional (opcional)</label>
+            <select name="profesional" class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-salud-600">
+              <option>Cualquiera disponible</option>
+              <option>Dra. Paula Soto</option>
+              <option>Dr. Marco Díaz</option>
+              <option>Dra. Ana Vera</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Día preferido</label>
+            <input name="fecha" type="date" class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-salud-600" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Nombre</label>
+            <input name="nombre" required placeholder="Tu nombre" class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-salud-600" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Teléfono</label>
+            <input name="telefono" required placeholder="+56 9 ..." class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-salud-600" />
+          </div>
+        </div>
+        <button type="submit" class="mt-5 w-full rounded-full bg-salud-600 text-white px-6 py-3.5 font-semibold hover:bg-salud-700">Solicitar hora</button>
+        <a id="wa-cita" href="#" class="mt-3 block rounded-full border border-salud-600 text-salud-700 px-6 py-3 text-center font-semibold hover:bg-salud-50">O agendar por WhatsApp</a>
+        <p id="msg-cita" class="mt-3 text-center text-sm text-salud-700 font-semibold hidden">✓ ¡Solicitud recibida! Te confirmaremos la hora muy pronto.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-salud-900 text-salud-100 py-10">
+    <div class="max-w-5xl mx-auto px-5 text-center text-sm">
+      <p class="font-extrabold text-white text-lg">🦷 Clínica Sonrisa</p>
+      <p class="mt-2">Av. Providencia 1234, Santiago · Lun a Sáb · 📞 +56 9 0000 0000</p>
+      <p class="mt-4 text-salud-100/60">Web demo creada con NexVoz · Recepcionista IA 24/7</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
