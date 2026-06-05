@@ -29,6 +29,10 @@ woekstation/
 │   ├── vapi-config.json          ← configuración + herramientas (tools)
 │   └── guia-configuracion.md     ← paso a paso para montarlo
 │
+├── marca/                        ← 🎨 identidad de marca (logo SVG + guía)
+│   ├── logo.svg
+│   └── identidad-marca.md
+│
 ├── backend-integracion/          ← Conecta la llamada con tu base de datos y WhatsApp
 │   ├── server.js                 ← servidor Node (sin dependencias externas)
 │   ├── package.json
@@ -36,9 +40,11 @@ woekstation/
 │   └── README.md
 │
 └── documentos-negocio/
-    ├── precios-y-paquetes-CLP.md ← cuánto cobrar (pesos chilenos)
-    ├── scripts-prospeccion.md    ← cómo conseguir tus primeros 3 clientes
-    └── plan-de-lanzamiento-30-dias.md
+    ├── precios-y-paquetes-CLP.md       ← cuánto cobrar (pesos chilenos)
+    ├── scripts-prospeccion.md          ← cómo conseguir tus primeros 3 clientes
+    ├── plan-de-lanzamiento-30-dias.md
+    ├── propuesta-comercial-plantilla.md ← 📄 propuesta para enviar a clientes
+    └── contrato-servicio-plantilla.md   ← 📄 contrato de servicio (referencial)
 ```
 
 ## Las 3 circunstancias cubiertas

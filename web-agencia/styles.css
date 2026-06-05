@@ -1,12 +1,12 @@
-/* Estilos personalizados que complementan a Tailwind (CDN) */
+/* Estilos personalizados que complementan a Tailwind (CDN) — NexVoz */
 
 html { scroll-behavior: smooth; }
 
-/* Oculta el indicador "+" duplicado de los <details> nativos */
+/* Oculta el marcador nativo de los <details> */
 summary::-webkit-details-marker { display: none; }
 summary { list-style: none; }
 
-/* Animación suave de aparición para secciones */
+/* Animación suave de aparición al hacer scroll */
 .fade-in {
   opacity: 0;
   transform: translateY(16px);
@@ -17,8 +17,14 @@ summary { list-style: none; }
   transform: translateY(0);
 }
 
-/* Mejora foco accesible */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 2px solid #2563eb;
+/* Foco accesible con el color de marca */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid #4f46e5;
   outline-offset: 2px;
+}
+
+/* Respeta usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in { opacity: 1; transform: none; transition: none; }
 }
