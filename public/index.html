@@ -6,43 +6,40 @@
   <title>NexVoz · Recepción con IA 24/7 + webs que convierten | Chile</title>
   <meta name="description" content="Agencia de automatización con IA en Chile. Diseñamos sitios web que convierten y recepcionistas con inteligencia artificial que atienden el teléfono 24/7, agendan y registran cada oportunidad." />
   <meta name="theme-color" content="#4F46E5" />
-
-  <!-- Open Graph -->
   <meta property="og:title" content="NexVoz · Recepción con IA 24/7 + webs que convierten" />
   <meta property="og:description" content="Tu negocio atiende cada llamada y convierte cada visita, aunque tú no puedas estar." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_CL" />
-
-  <!-- Favicon SVG -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%234F46E5'/%3E%3Cg stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='13' y1='22' x2='13' y2='34'/%3E%3Cline x1='20' y1='16' x2='20' y2='40'/%3E%3Cline x1='27' y1='21' x2='27' y2='35'/%3E%3Cline x1='34' y1='13' x2='34' y2='43'/%3E%3Cline x1='41' y1='24' x2='41' y2='32'/%3E%3C/g%3E%3C/svg%3E" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',500:'#4f46e5',600:'#4338ca',700:'#3730a3' },
-            violeta: { 500:'#7c3aed' },
-            accent: { 400:'#34d399', 500:'#10b981', 600:'#059669' },
-            ink: { 900:'#0b1220' }
-          },
-          fontFamily: {
-            sans: ['Inter','system-ui','sans-serif'],
-            display: ['"Plus Jakarta Sans"','Inter','sans-serif']
-          }
-        }
-      }
+      theme: { extend: {
+        colors: {
+          brand: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',500:'#4f46e5',600:'#4338ca',700:'#3730a3' },
+          violeta: { 500:'#7c3aed' },
+          accent: { 400:'#34d399', 500:'#10b981', 600:'#059669' },
+          ink: { 900:'#0b1220' }
+        },
+        fontFamily: { sans:['Inter','system-ui','sans-serif'], display:['"Plus Jakarta Sans"','Inter','sans-serif'] }
+      } }
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    summary::-webkit-details-marker { display: none; } summary { list-style: none; }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid #4f46e5; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-in { opacity: 1; transform: none; transition: none; } }
+  </style>
 </head>
 <body class="font-sans text-slate-700 antialiased bg-white">
 
-  <!-- ===== NAV ===== -->
   <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
     <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
       <a href="#inicio" class="flex items-center gap-2.5" aria-label="NexVoz inicio">
@@ -58,13 +55,10 @@
         <a href="#precios" class="hover:text-brand-500 transition">Planes</a>
         <a href="#faq" class="hover:text-brand-500 transition">FAQ</a>
       </div>
-      <a href="#contacto" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-600 transition shadow-sm">
-        Solicitar demo
-      </a>
+      <a href="#contacto" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-600 transition shadow-sm">Solicitar demo</a>
     </nav>
   </header>
 
-  <!-- ===== HERO ===== -->
   <section id="inicio" class="relative pt-32 pb-20 overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50/70 via-white to-white"></div>
     <div class="absolute -top-24 -right-24 -z-10 h-96 w-96 rounded-full bg-violeta-500/10 blur-3xl"></div>
@@ -81,12 +75,8 @@
           que responden 24/7, agendan y registran cada oportunidad. Sin perder un solo cliente.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#contacto" class="rounded-full bg-brand-500 px-7 py-3.5 text-center font-semibold text-white hover:bg-brand-600 transition shadow-lg shadow-brand-500/25">
-            Solicitar demo gratis
-          </a>
-          <a href="#proceso" class="rounded-full border border-slate-200 bg-white px-7 py-3.5 text-center font-semibold text-slate-700 hover:border-brand-300 hover:text-brand-600 transition">
-            Ver cómo funciona
-          </a>
+          <a href="#contacto" class="rounded-full bg-brand-500 px-7 py-3.5 text-center font-semibold text-white hover:bg-brand-600 transition shadow-lg shadow-brand-500/25">Solicitar demo gratis</a>
+          <a href="#proceso" class="rounded-full border border-slate-200 bg-white px-7 py-3.5 text-center font-semibold text-slate-700 hover:border-brand-300 hover:text-brand-600 transition">Ver cómo funciona</a>
         </div>
         <dl class="mt-10 grid grid-cols-3 gap-6 max-w-md">
           <div><dt class="font-display text-2xl font-extrabold text-ink-900">24/7</dt><dd class="text-sm text-slate-500">Atención continua</dd></div>
@@ -94,24 +84,19 @@
           <div><dt class="font-display text-2xl font-extrabold text-ink-900">100%</dt><dd class="text-sm text-slate-500">Llamadas atendidas</dd></div>
         </dl>
       </div>
-
-      <!-- Tarjeta: simulación de llamada -->
       <div class="relative">
         <div class="rounded-3xl bg-white shadow-2xl shadow-brand-900/10 ring-1 ring-slate-100 p-6">
           <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
             <span class="h-10 w-10 rounded-full bg-brand-50 flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </span>
-            <div>
-              <p class="font-semibold text-slate-800 text-sm">Recepcionista IA</p>
-              <p class="text-xs text-slate-400">En línea · respondiendo</p>
-            </div>
+            <div><p class="font-semibold text-slate-800 text-sm">Recepcionista IA</p><p class="text-xs text-slate-400">En línea · respondiendo</p></div>
             <span class="ml-auto text-xs font-semibold text-accent-600 bg-accent-500/10 px-2.5 py-1 rounded-full">Atendida</span>
           </div>
           <div class="space-y-3 py-4 text-sm">
             <div class="max-w-[82%] rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-2.5 text-slate-700">Hola, gracias por llamar. ¿En qué puedo ayudarle hoy?</div>
             <div class="ml-auto max-w-[82%] rounded-2xl rounded-tr-sm bg-brand-500 px-4 py-2.5 text-white">Quiero agendar una hora para mañana.</div>
-            <div class="max-w-[82%] rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-2.5 text-slate-700">Perfecto. Tengo disponible mañana a las 11:00 o 16:30. ¿Cuál le acomoda?</div>
+            <div class="max-w-[82%] rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-2.5 text-slate-700">Perfecto. Tengo a las 11:00 o 16:30. ¿Cuál le acomoda?</div>
           </div>
           <div class="mt-2 rounded-xl bg-accent-500/10 px-4 py-3 text-sm text-accent-600 font-medium flex items-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -122,7 +107,6 @@
     </div>
   </section>
 
-  <!-- ===== TECH / CONFIANZA ===== -->
   <section class="border-y border-slate-100 bg-slate-50/60">
     <div class="max-w-6xl mx-auto px-5 py-8">
       <p class="text-center text-xs font-semibold uppercase tracking-widest text-slate-400">Construido sobre infraestructura líder en IA</p>
@@ -132,29 +116,18 @@
     </div>
   </section>
 
-  <!-- ===== PROBLEMA ===== -->
   <section class="py-20">
     <div class="max-w-5xl mx-auto px-5 text-center">
       <h2 class="font-display text-3xl font-extrabold text-ink-900">Cada llamada perdida es un cliente de la competencia</h2>
       <p class="mt-4 text-slate-600 max-w-2xl mx-auto">Estás atendiendo, en terreno o con las manos ocupadas. El teléfono suena y nadie contesta. Tu cliente llama al siguiente negocio. Esto pasa todos los días.</p>
       <div class="mt-12 grid sm:grid-cols-3 gap-5 text-left">
-        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition">
-          <h3 class="font-display font-bold text-slate-800">Hora punta sin control</h3>
-          <p class="mt-2 text-sm text-slate-500">Cuando más oportunidades entran, es cuando más se pierden.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition">
-          <h3 class="font-display font-bold text-slate-800">Fuera de horario</h3>
-          <p class="mt-2 text-sm text-slate-500">Quien llama de noche o fin de semana no encuentra a nadie.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition">
-          <h3 class="font-display font-bold text-slate-800">Ingresos que se escapan</h3>
-          <p class="mt-2 text-sm text-slate-500">Cada llamada no atendida es dinero que nunca llega a tu caja.</p>
-        </div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition"><h3 class="font-display font-bold text-slate-800">Hora punta sin control</h3><p class="mt-2 text-sm text-slate-500">Cuando más oportunidades entran, es cuando más se pierden.</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition"><h3 class="font-display font-bold text-slate-800">Fuera de horario</h3><p class="mt-2 text-sm text-slate-500">Quien llama de noche o fin de semana no encuentra a nadie.</p></div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition"><h3 class="font-display font-bold text-slate-800">Ingresos que se escapan</h3><p class="mt-2 text-sm text-slate-500">Cada llamada no atendida es dinero que nunca llega a tu caja.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SERVICIOS ===== -->
   <section id="servicios" class="py-20 bg-slate-50/60 border-y border-slate-100">
     <div class="max-w-6xl mx-auto px-5">
       <div class="text-center max-w-2xl mx-auto">
@@ -164,9 +137,7 @@
       </div>
       <div class="mt-12 grid md:grid-cols-2 gap-6">
         <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-100">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-500">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </span>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-500"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
           <h3 class="mt-5 font-display text-xl font-bold text-ink-900">Sitios web que convierten</h3>
           <p class="mt-2 text-slate-600">Diseño profesional, rápido y pensado para transformar visitantes en clientes.</p>
           <ul class="mt-5 space-y-2.5 text-sm text-slate-600">
@@ -177,9 +148,7 @@
           </ul>
         </div>
         <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-100">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 text-accent-600">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-          </span>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 text-accent-600"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span>
           <h3 class="mt-5 font-display text-xl font-bold text-ink-900">Recepcionista con IA 24/7</h3>
           <p class="mt-2 text-slate-600">Una voz natural que atiende cada llamada, resuelve y registra todo automáticamente.</p>
           <ul class="mt-5 space-y-2.5 text-sm text-slate-600">
@@ -193,7 +162,6 @@
     </div>
   </section>
 
-  <!-- ===== PROCESO ===== -->
   <section id="proceso" class="py-20">
     <div class="max-w-6xl mx-auto px-5">
       <div class="text-center max-w-2xl mx-auto">
@@ -202,31 +170,14 @@
         <p class="mt-4 text-slate-600">Un flujo automático que trabaja por ti, sin que muevas un dedo.</p>
       </div>
       <div class="mt-14 grid md:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">1</div>
-          <h3 class="mt-4 font-display font-bold text-slate-800">El cliente llama</h3>
-          <p class="mt-1.5 text-sm text-slate-500">A tu número de siempre. La IA contesta al instante.</p>
-        </div>
-        <div class="text-center">
-          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">2</div>
-          <h3 class="mt-4 font-display font-bold text-slate-800">La IA conversa</h3>
-          <p class="mt-1.5 text-sm text-slate-500">Toma el pedido, agenda o califica el lead de forma natural.</p>
-        </div>
-        <div class="text-center">
-          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">3</div>
-          <h3 class="mt-4 font-display font-bold text-slate-800">Se registra todo</h3>
-          <p class="mt-1.5 text-sm text-slate-500">La información entra a tu base de datos y panel automáticamente.</p>
-        </div>
-        <div class="text-center">
-          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">4</div>
-          <h3 class="mt-4 font-display font-bold text-slate-800">Te notificamos</h3>
-          <p class="mt-1.5 text-sm text-slate-500">Recibes todo al instante por WhatsApp. Listo para actuar.</p>
-        </div>
+        <div class="text-center"><div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">1</div><h3 class="mt-4 font-display font-bold text-slate-800">El cliente llama</h3><p class="mt-1.5 text-sm text-slate-500">A tu número de siempre. La IA contesta al instante.</p></div>
+        <div class="text-center"><div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">2</div><h3 class="mt-4 font-display font-bold text-slate-800">La IA conversa</h3><p class="mt-1.5 text-sm text-slate-500">Toma el pedido, agenda o califica el lead de forma natural.</p></div>
+        <div class="text-center"><div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">3</div><h3 class="mt-4 font-display font-bold text-slate-800">Se registra todo</h3><p class="mt-1.5 text-sm text-slate-500">La información entra a tu base de datos y panel automáticamente.</p></div>
+        <div class="text-center"><div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-500 font-display font-extrabold text-xl flex items-center justify-center">4</div><h3 class="mt-4 font-display font-bold text-slate-800">Te notificamos</h3><p class="mt-1.5 text-sm text-slate-500">Recibes todo al instante por WhatsApp. Listo para actuar.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTORES ===== -->
   <section id="sectores" class="py-20 bg-slate-50/60 border-y border-slate-100">
     <div class="max-w-6xl mx-auto px-5">
       <div class="text-center max-w-2xl mx-auto">
@@ -235,26 +186,13 @@
         <p class="mt-4 text-slate-600">Adaptamos la IA al lenguaje y las necesidades de cada negocio.</p>
       </div>
       <div class="mt-12 grid sm:grid-cols-3 gap-6">
-        <div class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm">
-          <h3 class="font-display font-bold text-ink-900">Restaurantes</h3>
-          <p class="mt-2 text-sm text-slate-500">La IA toma pedidos en hora punta sin que se pierda ninguno.</p>
-          <a href="../web-demo-restaurante/index.html" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 transition-all">Ver demo →</a>
-        </div>
-        <div class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm">
-          <h3 class="font-display font-bold text-ink-900">Clínicas y salud</h3>
-          <p class="mt-2 text-sm text-slate-500">Agenda, confirma y reagenda citas las 24 horas.</p>
-          <a href="../web-demo-clinica/index.html" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 transition-all">Ver demo →</a>
-        </div>
-        <div class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm">
-          <h3 class="font-display font-bold text-ink-900">Oficios y urgencias</h3>
-          <p class="mt-2 text-sm text-slate-500">Captura y califica leads de urgencia mientras trabajas.</p>
-          <a href="../web-demo-cerrajero/index.html" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 transition-all">Ver demo →</a>
-        </div>
+        <div class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm"><h3 class="font-display font-bold text-ink-900">Restaurantes</h3><p class="mt-2 text-sm text-slate-500">La IA toma pedidos en hora punta sin que se pierda ninguno.</p><a href="/restaurante" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 transition-all">Ver demo →</a></div>
+        <div class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm"><h3 class="font-display font-bold text-ink-900">Clínicas y salud</h3><p class="mt-2 text-sm text-slate-500">Agenda, confirma y reagenda citas las 24 horas.</p><a href="/clinica" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 transition-all">Ver demo →</a></div>
+        <div class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm"><h3 class="font-display font-bold text-ink-900">Oficios y urgencias</h3><p class="mt-2 text-sm text-slate-500">Captura y califica leads de urgencia mientras trabajas.</p><a href="/cerrajero" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 transition-all">Ver demo →</a></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== TESTIMONIOS (reemplazar por reales) ===== -->
   <section class="py-20">
     <div class="max-w-6xl mx-auto px-5">
       <div class="text-center max-w-2xl mx-auto">
@@ -263,26 +201,13 @@
         <p class="mt-3 text-xs text-slate-400">* Testimonios de ejemplo — reemplázalos por los de tus clientes reales.</p>
       </div>
       <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <figure class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm">
-          <div class="text-accent-500 font-bold">★★★★★</div>
-          <blockquote class="mt-3 text-slate-600 text-sm">"Dejamos de perder pedidos en la noche. La IA contesta igual que una persona y todo me llega al WhatsApp."</blockquote>
-          <figcaption class="mt-4 text-sm"><span class="font-semibold text-ink-900">Dueño de pizzería</span><span class="block text-slate-400">Santiago</span></figcaption>
-        </figure>
-        <figure class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm">
-          <div class="text-accent-500 font-bold">★★★★★</div>
-          <blockquote class="mt-3 text-slate-600 text-sm">"Mi recepción ya no colapsa. Las horas se agendan solas y bajaron las inasistencias."</blockquote>
-          <figcaption class="mt-4 text-sm"><span class="font-semibold text-ink-900">Administradora de clínica</span><span class="block text-slate-400">Providencia</span></figcaption>
-        </figure>
-        <figure class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm">
-          <div class="text-accent-500 font-bold">★★★★★</div>
-          <blockquote class="mt-3 text-slate-600 text-sm">"Antes perdía trabajos por no contestar en terreno. Ahora capto cada urgencia."</blockquote>
-          <figcaption class="mt-4 text-sm"><span class="font-semibold text-ink-900">Cerrajero independiente</span><span class="block text-slate-400">Maipú</span></figcaption>
-        </figure>
+        <figure class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm"><div class="text-accent-500 font-bold">★★★★★</div><blockquote class="mt-3 text-slate-600 text-sm">"Dejamos de perder pedidos en la noche. La IA contesta igual que una persona y todo me llega al WhatsApp."</blockquote><figcaption class="mt-4 text-sm"><span class="font-semibold text-ink-900">Dueño de pizzería</span><span class="block text-slate-400">Santiago</span></figcaption></figure>
+        <figure class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm"><div class="text-accent-500 font-bold">★★★★★</div><blockquote class="mt-3 text-slate-600 text-sm">"Mi recepción ya no colapsa. Las horas se agendan solas y bajaron las inasistencias."</blockquote><figcaption class="mt-4 text-sm"><span class="font-semibold text-ink-900">Administradora de clínica</span><span class="block text-slate-400">Providencia</span></figcaption></figure>
+        <figure class="rounded-3xl bg-white p-7 ring-1 ring-slate-100 shadow-sm"><div class="text-accent-500 font-bold">★★★★★</div><blockquote class="mt-3 text-slate-600 text-sm">"Antes perdía trabajos por no contestar en terreno. Ahora capto cada urgencia."</blockquote><figcaption class="mt-4 text-sm"><span class="font-semibold text-ink-900">Cerrajero independiente</span><span class="block text-slate-400">Maipú</span></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- ===== PRECIOS ===== -->
   <section id="precios" class="py-20 bg-slate-50/60 border-y border-slate-100">
     <div class="max-w-6xl mx-auto px-5">
       <div class="text-center max-w-2xl mx-auto">
@@ -292,10 +217,8 @@
       </div>
       <div class="mt-12 grid md:grid-cols-3 gap-6 items-stretch">
         <div class="rounded-3xl bg-white p-8 ring-1 ring-slate-100 shadow-sm flex flex-col">
-          <h3 class="font-display font-bold text-lg text-ink-900">Starter</h3>
-          <p class="text-sm text-slate-500">Para arrancar con lo esencial.</p>
-          <p class="mt-5 font-display text-3xl font-extrabold text-ink-900">$390.000<span class="text-base font-medium text-slate-400"> setup</span></p>
-          <p class="text-sm text-slate-500">+ $89.000 / mes</p>
+          <h3 class="font-display font-bold text-lg text-ink-900">Starter</h3><p class="text-sm text-slate-500">Para arrancar con lo esencial.</p>
+          <p class="mt-5 font-display text-3xl font-extrabold text-ink-900">$390.000<span class="text-base font-medium text-slate-400"> setup</span></p><p class="text-sm text-slate-500">+ $89.000 / mes</p>
           <ul class="mt-6 space-y-2.5 text-sm text-slate-600 flex-1">
             <li class="flex gap-2.5"><span class="text-accent-500 mt-0.5">✓</span> Web de 1 página (landing)</li>
             <li class="flex gap-2.5"><span class="text-accent-500 mt-0.5">✓</span> Recepcionista IA básica</li>
@@ -306,10 +229,8 @@
         </div>
         <div class="rounded-3xl bg-ink-900 p-8 shadow-xl shadow-ink-900/30 flex flex-col relative ring-1 ring-ink-900">
           <span class="absolute top-5 right-5 text-xs font-bold bg-accent-500 text-white px-3 py-1 rounded-full">RECOMENDADO</span>
-          <h3 class="font-display font-bold text-lg text-white">Pro</h3>
-          <p class="text-sm text-slate-300">El equilibrio perfecto.</p>
-          <p class="mt-5 font-display text-3xl font-extrabold text-white">$790.000<span class="text-base font-medium text-slate-400"> setup</span></p>
-          <p class="text-sm text-slate-300">+ $159.000 / mes</p>
+          <h3 class="font-display font-bold text-lg text-white">Pro</h3><p class="text-sm text-slate-300">El equilibrio perfecto.</p>
+          <p class="mt-5 font-display text-3xl font-extrabold text-white">$790.000<span class="text-base font-medium text-slate-400"> setup</span></p><p class="text-sm text-slate-300">+ $159.000 / mes</p>
           <ul class="mt-6 space-y-2.5 text-sm text-slate-200 flex-1">
             <li class="flex gap-2.5"><span class="text-accent-400 mt-0.5">✓</span> Web profesional multi-sección</li>
             <li class="flex gap-2.5"><span class="text-accent-400 mt-0.5">✓</span> Recepcionista IA avanzada</li>
@@ -320,10 +241,8 @@
           <a href="#contacto" class="mt-6 rounded-full bg-accent-500 px-5 py-3 text-center font-semibold text-white hover:bg-accent-600 transition">Elegir Pro</a>
         </div>
         <div class="rounded-3xl bg-white p-8 ring-1 ring-slate-100 shadow-sm flex flex-col">
-          <h3 class="font-display font-bold text-lg text-ink-900">Premium</h3>
-          <p class="text-sm text-slate-500">Máximo rendimiento y soporte.</p>
-          <p class="mt-5 font-display text-3xl font-extrabold text-ink-900">$1.490.000<span class="text-base font-medium text-slate-400"> setup</span></p>
-          <p class="text-sm text-slate-500">+ $299.000 / mes</p>
+          <h3 class="font-display font-bold text-lg text-ink-900">Premium</h3><p class="text-sm text-slate-500">Máximo rendimiento y soporte.</p>
+          <p class="mt-5 font-display text-3xl font-extrabold text-ink-900">$1.490.000<span class="text-base font-medium text-slate-400"> setup</span></p><p class="text-sm text-slate-500">+ $299.000 / mes</p>
           <ul class="mt-6 space-y-2.5 text-sm text-slate-600 flex-1">
             <li class="flex gap-2.5"><span class="text-accent-500 mt-0.5">✓</span> Web completa + e-commerce básico</li>
             <li class="flex gap-2.5"><span class="text-accent-500 mt-0.5">✓</span> IA multi-flujo (pedidos + soporte)</li>
@@ -337,114 +256,51 @@
     </div>
   </section>
 
-  <!-- ===== FAQ ===== -->
   <section id="faq" class="py-20">
     <div class="max-w-3xl mx-auto px-5">
-      <div class="text-center">
-        <span class="text-sm font-semibold text-brand-500">Preguntas frecuentes</span>
-        <h2 class="mt-2 font-display text-3xl font-extrabold text-ink-900">Resolvemos tus dudas</h2>
-      </div>
+      <div class="text-center"><span class="text-sm font-semibold text-brand-500">Preguntas frecuentes</span><h2 class="mt-2 font-display text-3xl font-extrabold text-ink-900">Resolvemos tus dudas</h2></div>
       <div class="mt-10 space-y-3">
-        <details class="group rounded-2xl border border-slate-200 p-5">
-          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿La IA suena como un robot?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary>
-          <p class="mt-3 text-sm text-slate-600">No. Usamos voces neuronales muy naturales en español. La mayoría de las personas no nota la diferencia, y siempre podemos transferir a una persona real.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 p-5">
-          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Tengo que cambiar mi número?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary>
-          <p class="mt-3 text-sm text-slate-600">No. Mantienes tu número actual; solo redirigimos las llamadas a la IA cuando no contestas, o las 24/7, según prefieras.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 p-5">
-          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Cuánto tarda la implementación?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary>
-          <p class="mt-3 text-sm text-slate-600">Entre 3 y 10 días hábiles según el plan. Te entregamos todo configurado y funcionando.</p>
-        </details>
-        <details class="group rounded-2xl border border-slate-200 p-5">
-          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Y si no obtengo resultados?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary>
-          <p class="mt-3 text-sm text-slate-600">Ofrecemos 30 días de garantía. Si la solución no te ayuda a captar más clientes, te devolvemos la inversión de configuración.</p>
-        </details>
+        <details class="group rounded-2xl border border-slate-200 p-5"><summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿La IA suena como un robot?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary><p class="mt-3 text-sm text-slate-600">No. Usamos voces neuronales muy naturales en español. La mayoría no nota la diferencia, y siempre podemos transferir a una persona real.</p></details>
+        <details class="group rounded-2xl border border-slate-200 p-5"><summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Tengo que cambiar mi número?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary><p class="mt-3 text-sm text-slate-600">No. Mantienes tu número actual; redirigimos las llamadas a la IA cuando no contestas, o las 24/7, según prefieras.</p></details>
+        <details class="group rounded-2xl border border-slate-200 p-5"><summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Cuánto tarda la implementación?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary><p class="mt-3 text-sm text-slate-600">Entre 3 y 10 días hábiles según el plan. Te entregamos todo configurado y funcionando.</p></details>
+        <details class="group rounded-2xl border border-slate-200 p-5"><summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Y si no obtengo resultados?<span class="text-brand-500 group-open:rotate-45 transition text-xl leading-none">+</span></summary><p class="mt-3 text-sm text-slate-600">Ofrecemos 30 días de garantía. Si la solución no te ayuda a captar más clientes, te devolvemos la inversión de configuración.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACTO ===== -->
   <section id="contacto" class="py-20 bg-gradient-to-br from-brand-600 to-violeta-500">
     <div class="max-w-3xl mx-auto px-5 text-center text-white">
       <h2 class="font-display text-3xl font-extrabold">Agenda tu demo gratis</h2>
       <p class="mt-3 text-brand-100">Montamos una recepcionista IA con el nombre de tu negocio para que la pruebes. Sin compromiso.</p>
       <form id="lead-form" class="mt-8 bg-white rounded-3xl p-6 text-left text-slate-800 shadow-2xl">
         <div class="grid sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium mb-1">Tu nombre</label>
-            <input name="nombre" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="Ej: Camila Rojas" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1">Negocio</label>
-            <input name="negocio" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="Ej: Pizzería Don Beto" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1">Teléfono / WhatsApp</label>
-            <input name="telefono" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="+56 9 ..." />
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1">Rubro</label>
-            <select name="rubro" class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none">
-              <option>Restaurante / Comida</option>
-              <option>Clínica / Salud</option>
-              <option>Oficio / Urgencias</option>
-              <option>Otro</option>
-            </select>
-          </div>
+          <div><label class="block text-sm font-medium mb-1">Tu nombre</label><input name="nombre" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="Ej: Camila Rojas" /></div>
+          <div><label class="block text-sm font-medium mb-1">Negocio</label><input name="negocio" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="Ej: Pizzería Don Beto" /></div>
+          <div><label class="block text-sm font-medium mb-1">Teléfono / WhatsApp</label><input name="telefono" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="+56 9 ..." /></div>
+          <div><label class="block text-sm font-medium mb-1">Rubro</label><select name="rubro" class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none"><option>Restaurante / Comida</option><option>Clínica / Salud</option><option>Oficio / Urgencias</option><option>Otro</option></select></div>
         </div>
-        <button type="submit" class="mt-5 w-full rounded-full bg-brand-500 px-6 py-3.5 font-semibold text-white hover:bg-brand-600 transition">
-          Solicitar mi demo gratis
-        </button>
+        <button type="submit" class="mt-5 w-full rounded-full bg-brand-500 px-6 py-3.5 font-semibold text-white hover:bg-brand-600 transition">Solicitar mi demo gratis</button>
         <p id="form-msg" class="mt-3 text-center text-sm text-accent-600 font-medium hidden">¡Gracias! Te contactaremos muy pronto.</p>
       </form>
-      <p class="mt-5 text-sm text-brand-100">O escríbenos por WhatsApp:
-        <a href="https://wa.me/56900000000" class="underline font-semibold">+56 9 0000 0000</a>
-      </p>
+      <p class="mt-5 text-sm text-brand-100">O escríbenos por WhatsApp: <a href="https://wa.me/56900000000" class="underline font-semibold">+56 9 0000 0000</a></p>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="bg-ink-900 text-slate-300">
     <div class="max-w-6xl mx-auto px-5 py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
       <div class="sm:col-span-2">
         <div class="flex items-center gap-2.5">
-          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violeta-500">
-            <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><g stroke="#fff" stroke-width="3.5" stroke-linecap="round"><line x1="13" y1="22" x2="13" y2="34"/><line x1="20" y1="16" x2="20" y2="40"/><line x1="27" y1="21" x2="27" y2="35"/><line x1="34" y1="13" x2="34" y2="43"/><line x1="41" y1="24" x2="41" y2="32"/></g></svg>
-          </span>
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violeta-500"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><g stroke="#fff" stroke-width="3.5" stroke-linecap="round"><line x1="13" y1="22" x2="13" y2="34"/><line x1="20" y1="16" x2="20" y2="40"/><line x1="27" y1="21" x2="27" y2="35"/><line x1="34" y1="13" x2="34" y2="43"/><line x1="41" y1="24" x2="41" y2="32"/></g></svg></span>
           <span class="font-display font-extrabold text-xl text-white">NexVoz</span>
         </div>
         <p class="mt-4 text-sm max-w-sm text-slate-400">Recepción con IA 24/7 y sitios web que convierten, para PYMEs y negocios locales en Chile.</p>
       </div>
-      <div>
-        <h4 class="font-semibold text-white text-sm">Producto</h4>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li><a href="#servicios" class="hover:text-white">Servicios</a></li>
-          <li><a href="#precios" class="hover:text-white">Planes</a></li>
-          <li><a href="#sectores" class="hover:text-white">Sectores</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold text-white text-sm">Contacto</h4>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li><a href="#contacto" class="hover:text-white">Solicitar demo</a></li>
-          <li><a href="https://wa.me/56900000000" class="hover:text-white">WhatsApp</a></li>
-          <li><a href="mailto:hola@nexvoz.cl" class="hover:text-white">hola@nexvoz.cl</a></li>
-        </ul>
-      </div>
+      <div><h4 class="font-semibold text-white text-sm">Producto</h4><ul class="mt-3 space-y-2 text-sm"><li><a href="#servicios" class="hover:text-white">Servicios</a></li><li><a href="#precios" class="hover:text-white">Planes</a></li><li><a href="#sectores" class="hover:text-white">Sectores</a></li></ul></div>
+      <div><h4 class="font-semibold text-white text-sm">Contacto</h4><ul class="mt-3 space-y-2 text-sm"><li><a href="#contacto" class="hover:text-white">Solicitar demo</a></li><li><a href="https://wa.me/56900000000" class="hover:text-white">WhatsApp</a></li><li><a href="mailto:hola@nexvoz.cl" class="hover:text-white">hola@nexvoz.cl</a></li></ul></div>
     </div>
-    <div class="border-t border-white/10">
-      <div class="max-w-6xl mx-auto px-5 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-400">
-        <p>© <span id="year"></span> NexVoz. Todos los derechos reservados.</p>
-        <div class="flex gap-5">
-          <a href="#" class="hover:text-white">Política de privacidad</a>
-          <a href="#" class="hover:text-white">Términos</a>
-        </div>
-      </div>
-    </div>
+    <div class="border-t border-white/10"><div class="max-w-6xl mx-auto px-5 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-400"><p>© <span id="year"></span> NexVoz. Todos los derechos reservados.</p><div class="flex gap-5"><a href="#" class="hover:text-white">Política de privacidad</a><a href="#" class="hover:text-white">Términos</a></div></div></div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

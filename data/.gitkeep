@@ -1,0 +1,2 @@
+# Esta carpeta guarda la base de datos local (store.json).
+# El archivo store.json se genera solo al iniciar el servidor y no se versiona.

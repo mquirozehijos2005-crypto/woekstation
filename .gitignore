@@ -6,6 +6,9 @@ node_modules/
 .env.local
 *.key
 
+# Base de datos local (se genera en runtime)
+data/store.json
+
 # Logs
 *.log
 npm-debug.log*
@@ -17,6 +20,3 @@ Thumbs.db
 # Editores
 .vscode/
 .idea/
-
-# Datos locales generados en runtime (descomenta si no quieres versionar los pedidos)
-# backend-integracion/pedidos.json

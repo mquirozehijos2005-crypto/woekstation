@@ -5,9 +5,9 @@ con un cliente real, para las 3 circunstancias:
 
 | Circunstancia | Web demo | Guion de IA | Endpoint backend |
 |---------------|----------|-------------|------------------|
-| 🍕 Restaurante (pedidos) | `web-demo-restaurante/` | `agente-voz-ia/prompt-sistema.md` | `/api/pedido` |
-| 🦷 Clínica (citas) | `web-demo-clinica/` | `agente-voz-ia/prompt-clinica.md` | `/api/cita` |
-| 🔧 Cerrajero (urgencias) | `web-demo-cerrajero/` | `agente-voz-ia/prompt-cerrajero.md` | `/api/urgencia` |
+| 🍕 Restaurante (pedidos) | `/restaurante` | `agente-voz-ia/prompt-sistema.md` | `/api/pedido` |
+| 🦷 Clínica (citas) | `/clinica` | `agente-voz-ia/prompt-clinica.md` | `/api/cita` |
+| 🔧 Cerrajero (urgencias) | `/cerrajero` | `agente-voz-ia/prompt-cerrajero.md` | `/api/urgencia` |
 
 ---
 
@@ -43,10 +43,10 @@ la IA envía los datos a tu backend → el backend guarda y avisa al dueño al i
 1. **Número de teléfono (Twilio):** el número al que llaman los clientes.
 2. **Agente de voz (Vapi):** la "inteligencia" que habla, entiende y decide cuándo
    guardar la información. Aquí pegas el **guion** (prompt) según la circunstancia.
-3. **Backend (`backend-integracion/server.js`):** recibe los datos, los guarda y
-   notifica al dueño. Es el "pegamento" del sistema.
-4. **Notificación + Dashboard:** cómo se entera el dueño (WhatsApp/Telegram) y dónde
-   ve el historial (`/dashboard.html`).
+3. **Backend (`server.js` + carpeta `src/`):** recibe los datos, los guarda y
+   notifica al dueño. Es el "pegamento" del sistema y también sirve las webs.
+4. **Notificación + Panel:** cómo se entera el dueño (WhatsApp/Telegram) y dónde
+   ve el historial (`/dashboard`).
 
 ---
 
@@ -55,14 +55,14 @@ la IA envía los datos a tu backend → el backend guarda y avisa al dueño al i
 ### Paso A — Levanta el backend y hazlo público
 El agente de voz vive en internet, así que necesita una URL pública para enviarte los datos.
 
-1. Sube el backend a un hosting gratis (**Render** o **Railway**):
+1. Sube el proyecto a un hosting gratis (**Render** o **Railway**):
    - Conecta este repositorio.
-   - Comando de inicio: `node server.js`
+   - Comando de inicio: `npm start` (equivale a `node server.js`)
    - Agrega las variables de entorno (ver Paso C).
-   - Te dará una URL tipo `https://tu-backend.onrender.com`.
+   - Te dará una URL tipo `https://tu-app.onrender.com`.
 2. **Para probar desde tu PC** sin hosting, usa ngrok:
    ```bash
-   node server.js          # en una terminal
+   npm start               # en una terminal (sirve webs + API en :3000)
    npx ngrok http 3000     # en otra terminal → te da una URL pública temporal
    ```
 
@@ -112,18 +112,17 @@ Para correr local cargando el `.env`: `node --env-file=.env server.js`
 2. Completa una interacción real (un pedido / una cita / una urgencia).
 3. Verifica que:
    - [ ] Llega la notificación al WhatsApp/Telegram del dueño.
-   - [ ] Aparece en el dashboard (`URL_BACKEND/dashboard.html`).
+   - [ ] Aparece en el panel (`URL_BACKEND/dashboard`).
 
 ---
 
-## 4. Cómo conectar las WEBS demo al backend
-Cada web tiene un formulario. Por defecto solo muestra confirmación. Para que envíe
-los datos al backend, abre el `script.js` de esa web y cambia:
-```js
-const ENVIAR_AL_BACKEND = true;                 // estaba en false
-const BACKEND_URL = 'https://tu-backend.onrender.com/api/cita'; // o /api/urgencia, etc.
-```
-Así los formularios web también caen en tu dashboard, igual que las llamadas.
+## 4. Las webs ya están conectadas
+Como el mismo servidor sirve las webs y la API, **los formularios de las demos ya
+envían los datos al backend automáticamente** (al mismo origen, vía `/api/...`) y
+aparecen en el panel. No hay que configurar nada.
+
+> Si publicas solo la carpeta `public/` como sitio estático (sin backend), los
+> formularios usan WhatsApp como alternativa, de modo que nunca se pierde el contacto.
 
 ---
 
@@ -158,8 +157,8 @@ curl -X POST http://localhost:3000/api/urgencia -H "Content-Type: application/js
 ---
 
 ## 7. Cuando crezcas (siguiente nivel)
-- **Base de datos real:** cambia el archivo `pedidos.json` por Airtable o Postgres
-  (solo tienes que reemplazar las funciones `leerDB()` y `guardarDB()` en `server.js`).
+- **Base de datos real:** cambia el almacenamiento JSON por Airtable o Postgres
+  (solo tienes que reemplazar las funciones de `src/store.js`).
 - **Agenda real para clínicas:** conecta `consultar_disponibilidad` y `agendar_cita`
   con Google Calendar o Cal.com.
 - **Multi-cliente:** agrega un campo `negocio_id` a cada registro para atender a varios

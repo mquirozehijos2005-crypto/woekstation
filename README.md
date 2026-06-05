@@ -1,100 +1,131 @@
-# Kit Completo — Agencia de Automatización IA + Desarrollo Web (Chile)
+# NexVoz — Agencia de Automatización con IA + Desarrollo Web (Chile)
 
-Kit listo para lanzar tu agencia que ofrece a PYMEs y negocios locales:
-1. **Páginas web optimizadas para conversión.**
-2. **Agente de voz con IA** que contesta el teléfono 24/7, toma pedidos / agenda citas y avisa al dueño.
+Plataforma lista para lanzar una agencia que ofrece a PYMEs y negocios locales:
 
-Todo está pensado para el mercado chileno (precios en **CLP**) y para que puedas
-arrancar **sin presupuesto publicitario**.
+1. **Sitios web optimizados para conversión.**
+2. **Recepcionista con IA** que atiende el teléfono 24/7, toma pedidos, agenda citas
+   y captura urgencias, notificando al instante por WhatsApp/Telegram.
+
+Todo pensado para el mercado chileno (precios en **CLP**) y para arrancar **sin
+presupuesto publicitario**.
 
 ---
 
-## ¿Qué hay en este kit?
+## ✅ Demo funcional en 1 comando
+
+```bash
+npm start
+```
+
+Luego abre en el navegador:
+
+| URL | Qué es |
+|-----|--------|
+| http://localhost:3000/ | Sitio de la **agencia** (para vender) |
+| http://localhost:3000/restaurante | Demo restaurante (toma de pedidos) |
+| http://localhost:3000/clinica | Demo clínica (agenda de citas) |
+| http://localhost:3000/cerrajero | Demo cerrajero (urgencias) |
+| http://localhost:3000/dashboard | **Panel de gestión** en vivo |
+
+> Los formularios de todas las webs envían los datos al backend y aparecen en el
+> panel al instante. **No requiere `npm install`** (solo Node 18 o superior).
+
+---
+
+## Estructura del proyecto
 
 ```
 woekstation/
-├── README.md                     ← estás aquí (guía maestra)
-├── COMO-FUNCIONA.md              ← ⭐ cómo conectar todo y que funcione de verdad
+├── server.js                 ← servidor único (sirve las webs + API)
+├── package.json
+├── .env.example              ← variables de entorno (notificaciones, secreto)
 │
-├── web-agencia/                  ← TU sitio web para vender el servicio
+├── src/                      ← lógica del backend (modular y limpia)
+│   ├── store.js              ← capa de datos (JSON; fácil de migrar)
+│   ├── notify.js             ← notificaciones WhatsApp/Telegram
+│   └── messages.js           ← formato de los avisos al dueño
 │
-├── web-demo-restaurante/         ← Demo nicho 1: pedidos (🍕)
-├── web-demo-clinica/             ← Demo nicho 2: citas (🦷)
-├── web-demo-cerrajero/           ← Demo nicho 3: urgencias (🔧)
+├── data/                     ← base de datos local (se genera sola)
 │
-├── agente-voz-ia/                ← El cerebro del agente de voz
-│   ├── prompt-sistema.md         ← guion para RESTAURANTE (pedidos)
-│   ├── prompt-clinica.md         ← guion para CLÍNICA (citas)
-│   ├── prompt-cerrajero.md       ← guion para CERRAJERO (urgencias)
-│   ├── vapi-config.json          ← configuración + herramientas (tools)
-│   └── guia-configuracion.md     ← paso a paso para montarlo
+├── public/                   ← todo lo que se sirve por web
+│   ├── index.html  main.js   ← sitio de la agencia
+│   ├── dashboard.html        ← panel de gestión
+│   ├── restaurante/          ← demo (index.html + app.js)
+│   ├── clinica/              ← demo
+│   └── cerrajero/            ← demo
 │
-├── marca/                        ← 🎨 identidad de marca (logo SVG + guía)
-│   ├── logo.svg
-│   └── identidad-marca.md
+├── agente-voz-ia/            ← el cerebro del agente de voz
+│   ├── prompt-sistema.md     ← guion RESTAURANTE (pedidos)
+│   ├── prompt-clinica.md     ← guion CLÍNICA (citas)
+│   ├── prompt-cerrajero.md   ← guion CERRAJERO (urgencias)
+│   ├── vapi-config.json      ← configuración + herramientas (tools)
+│   └── guia-configuracion.md ← paso a paso para montarlo
 │
-├── backend-integracion/          ← Conecta la llamada con tu base de datos y WhatsApp
-│   ├── server.js                 ← servidor Node (sin dependencias externas)
-│   ├── package.json
-│   ├── public/dashboard.html     ← panel con pestañas (pedidos/citas/urgencias)
-│   └── README.md
+├── marca/                    ← identidad de marca (logo SVG + guía)
 │
-└── documentos-negocio/
-    ├── precios-y-paquetes-CLP.md       ← cuánto cobrar (pesos chilenos)
-    ├── scripts-prospeccion.md          ← cómo conseguir tus primeros 3 clientes
-    ├── plan-de-lanzamiento-30-dias.md
-    ├── propuesta-comercial-plantilla.md ← 📄 propuesta para enviar a clientes
-    └── contrato-servicio-plantilla.md   ← 📄 contrato de servicio (referencial)
+├── documentos-negocio/       ← precios CLP, prospección, propuesta y contrato
+│
+└── COMO-FUNCIONA.md          ← guía end-to-end para conectar todo
 ```
+
+---
 
 ## Las 3 circunstancias cubiertas
 
-| Circunstancia | Web demo | Guion de IA | Endpoint |
-|---------------|----------|-------------|----------|
-| 🍕 Restaurante (pedidos) | `web-demo-restaurante/` | `prompt-sistema.md` | `/api/pedido` |
-| 🦷 Clínica (citas) | `web-demo-clinica/` | `prompt-clinica.md` | `/api/cita` |
-| 🔧 Cerrajero (urgencias) | `web-demo-cerrajero/` | `prompt-cerrajero.md` | `/api/urgencia` |
-
-> 👉 **Para hacer funcionar todo de punta a punta, lee `COMO-FUNCIONA.md`.**
+| Circunstancia | Demo web | Guion de IA | Endpoint API |
+|---------------|----------|-------------|--------------|
+| Restaurante (pedidos) | `/restaurante` | `prompt-sistema.md` | `POST /api/pedido` |
+| Clínica (citas) | `/clinica` | `prompt-clinica.md` | `POST /api/cita` |
+| Cerrajero (urgencias) | `/cerrajero` | `prompt-cerrajero.md` | `POST /api/urgencia` |
 
 ---
 
-## Orden recomendado para arrancar (resumen de 30 días)
+## API
 
-| Semana | Qué hacer | Carpeta |
-|--------|-----------|---------|
-| 1 | Publica la web de tu agencia y define tu nicho | `web-agencia/` |
-| 1 | Monta el agente de voz demo | `agente-voz-ia/` |
-| 2 | Conecta el backend (pedido → base de datos → WhatsApp) | `backend-integracion/` |
-| 2 | Personaliza la demo de nicho | `web-demo-restaurante/` |
-| 3-4 | Prospecta y cierra tus primeros clientes | `documentos-negocio/` |
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| POST | `/api/pedido` | Registra un pedido (lo llama el agente IA o la web) |
+| POST | `/api/cita` | Registra una cita |
+| POST | `/api/urgencia` | Registra una urgencia/lead de oficio |
+| POST | `/api/lead` | Registra un lead desde el sitio de la agencia |
+| GET | `/api/data` | Devuelve todos los registros (para el panel) |
+| GET | `/api/health` | Estado del servicio |
 
 ---
 
-## Cómo abrir las webs (sin saber programar)
+## Notificaciones reales (opcional)
 
-1. Entra a la carpeta `web-agencia/`.
-2. Abre `index.html` en cualquier navegador (doble clic).
-3. Para publicarla gratis: arrastra la carpeta a **Netlify Drop** (https://app.netlify.com/drop) o súbela a **Vercel**.
+Copia `.env.example` a `.env`, completa tus credenciales y arranca con:
 
-## Cómo levantar el backend
-
-Ver instrucciones en `backend-integracion/README.md`. Resumen:
 ```bash
-cd backend-integracion
-node server.js
+node --env-file=.env server.js
 ```
-Luego abre http://localhost:3000/dashboard.html para ver los pedidos.
+
+- **Telegram** (lo más rápido): `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`.
+- **WhatsApp (Twilio):** variables `TWILIO_*` + `DUENO_WHATSAPP_TO`.
+
+Sin credenciales, las notificaciones se imprimen en la consola (modo simulado),
+así el sistema funciona igual mientras desarrollas.
 
 ---
 
-## Stack tecnológico usado (todo económico/gratis para empezar)
+## Publicar en producción (gratis)
 
-- **Web:** HTML + Tailwind (CDN) → cero costo, deploy gratis en Netlify/Vercel.
-- **Agente de voz:** Vapi (recomendado) o Retell AI.
-- **Telefonía / WhatsApp:** Twilio.
-- **Integración:** este backend en Node.js (puedes migrar a n8n/Make luego).
-- **Base de datos:** archivo local para empezar; migra a Airtable o Postgres al crecer.
+- **Backend + webs juntos:** despliega en **Render** o **Railway**
+  (comando de inicio `node server.js`, agrega las variables de entorno).
+- **Solo las webs (estático):** puedes subir la carpeta `public/` a Netlify/Vercel;
+  en ese caso los formularios usan WhatsApp como alternativa si no hay backend.
 
-> Importante: las llaves/credenciales (API keys de Vapi, Twilio, etc.) se configuran
-> con **variables de entorno**. Nunca las escribas dentro del código ni las subas a GitHub.
+> Las credenciales (API keys de Vapi, Twilio, etc.) van **siempre** en variables de
+> entorno. Nunca dentro del código ni subidas a GitHub.
+
+---
+
+## Stack
+
+- **Web:** HTML + Tailwind (CDN) + JS — cero build, fácil de desplegar.
+- **Backend:** Node.js nativo (sin dependencias).
+- **Agente de voz:** Vapi (recomendado) o Retell AI · **Telefonía:** Twilio.
+- **Datos:** archivo JSON local; migrable a Airtable/Postgres cambiando `src/store.js`.
+
+👉 Para conectar el agente de voz real, lee **`COMO-FUNCIONA.md`**.

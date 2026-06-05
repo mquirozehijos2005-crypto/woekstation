@@ -71,11 +71,11 @@ En el asistente, sección **Tools / Functions**, crea:
 
 ## Paso 5 — Prueba de punta a punta
 
-1. Levanta tu backend (`node server.js`) y exponlo con ngrok.
+1. Levanta el servidor (`npm start`) y exponlo con ngrok.
 2. Llama al número.
 3. Haz un pedido completo.
 4. Verifica que:
-   - El pedido aparece en el panel (`/dashboard.html`).
+   - El pedido aparece en el panel (`/dashboard`).
    - Llega la notificación al dueño (WhatsApp/Telegram).
 
 ---
