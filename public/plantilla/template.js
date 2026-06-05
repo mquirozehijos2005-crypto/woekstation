@@ -231,4 +231,9 @@
       form.reset(); mostrarOk();
     });
   }
+
+  // Carga el widget de recepcionista IA gratis (voz en el navegador).
+  var vz = document.createElement('script');
+  vz.src = '/plantilla/voz.js';
+  document.body.appendChild(vz);
 })();

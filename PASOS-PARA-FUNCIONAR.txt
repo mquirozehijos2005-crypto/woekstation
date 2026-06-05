@@ -30,18 +30,27 @@ FASE 0 — LO QUE NECESITAS ANTES DE EMPEZAR
 [ ] Un computador con internet.
 [ ] Instalar Node.js version 18 o superior (https://nodejs.org -> boton LTS).
 [ ] Una cuenta de GitHub (ya tienes el repo: woekstation).
-[ ] Crear estas cuentas (gratis para empezar):
-    [ ] Vapi          -> https://vapi.ai         (agente de voz)
-    [ ] Twilio        -> https://twilio.com       (numero de telefono / WhatsApp)
-    [ ] OpenAI        -> https://platform.openai.com (la "inteligencia" del agente)
-    [ ] Render        -> https://render.com       (para publicar el sistema gratis)
-    [ ] (Opcional) ElevenLabs -> voz mas natural en espanol
 
-COSTOS APROXIMADOS (referencia):
-- Vapi + OpenAI + voz: ~USD 0,08 a 0,15 por minuto de llamada (~$80 a $150 CLP/min).
+>>> RUTA GRATIS (recomendada para empezar, inversion $0) <<<
+Puedes construir, demostrar y VENDER sin pagar nada:
+    [ ] Webs publicadas gratis: Netlify / Vercel / GitHub Pages
+    [ ] Notificaciones gratis: Telegram (NO necesitas Twilio para avisos)
+    [ ] Demo de voz gratis: ya incluida en cada sitio (boton "Probar recepcionista
+        IA"), funciona con la voz del navegador, sin claves ni costo.
+    [ ] (Opcional) "Cerebro" IA gratis: Groq o Google Gemini (capas gratuitas)
+Detalle completo en el archivo: OPCIONES-GRATIS.md
+
+>>> CUANDO YA TENGAS UN CLIENTE PAGANDO (llamadas telefonicas reales) <<<
+Solo aqui aparece un costo, y lo cubre lo que te paga el cliente:
+    [ ] Vapi          -> https://vapi.ai          (agente de voz por telefono)
+    [ ] Twilio        -> https://twilio.com        (numero de telefono que suena)
+    [ ] OpenAI/Groq/Gemini -> el "cerebro" del agente
+    [ ] (Opcional) ElevenLabs -> voz mas natural en espanol
+    [ ] Hosting siempre activo: Render (~USD 7/mes) o similar
+
+COSTOS APROXIMADOS (solo en la fase con cliente):
+- Vapi + IA + voz: ~USD 0,08 a 0,15 por minuto (~$80 a $150 CLP/min).
 - Numero Twilio: ~USD 1 a 2 al mes + uso.
-- Render plan gratis: $0 (se "duerme" si no hay trafico; plan pago ~USD 7/mes lo
-  mantiene siempre activo, recomendado para clientes reales).
 - TU le cobras al cliente: setup + mensualidad + minutos con margen
   (ver documentos-negocio/precios-y-paquetes-CLP.md).
 
