@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexVoz · Webs que convierten + Recepcionista IA 24/7 para tu negocio</title>
+  <meta name="description" content="Creamos tu página web y una recepcionista con Inteligencia Artificial que contesta el teléfono 24/7, toma pedidos y agenda citas. Nunca pierdas otro cliente." />
+
+  <!-- Tailwind (CDN: cero configuración) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eef6ff',100:'#d9eaff',500:'#2563eb',600:'#1d4ed8',700:'#1e40af',900:'#172554' },
+            accent: { 400:'#34d399', 500:'#10b981', 600:'#059669' }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans text-slate-800 antialiased">
+
+  <!-- ===== NAV ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
+    <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-extrabold text-xl text-brand-900">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">N</span>
+        NexVoz
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#servicios" class="hover:text-brand-600">Servicios</a>
+        <a href="#como-funciona" class="hover:text-brand-600">Cómo funciona</a>
+        <a href="#precios" class="hover:text-brand-600">Precios</a>
+        <a href="#faq" class="hover:text-brand-600">Preguntas</a>
+      </div>
+      <a href="#contacto" class="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 transition">
+        Agenda una demo
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-brand-50 to-white">
+    <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-accent-500/10 text-accent-600 px-3 py-1 text-xs font-semibold mb-5">
+          ● Para PYMEs y negocios locales en Chile
+        </span>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-brand-900">
+          Deja de perder clientes por <span class="text-brand-600">no contestar el teléfono</span>
+        </h1>
+        <p class="mt-5 text-lg text-slate-600 max-w-lg">
+          Creamos tu página web profesional y una <strong>recepcionista con IA</strong> que
+          contesta las 24 horas, toma pedidos, agenda citas y te avisa al instante por WhatsApp.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#contacto" class="rounded-full bg-brand-600 px-7 py-3.5 text-center font-semibold text-white hover:bg-brand-700 transition shadow-lg shadow-brand-600/20">
+            Quiero mi demo gratis
+          </a>
+          <a href="#como-funciona" class="rounded-full border border-slate-300 px-7 py-3.5 text-center font-semibold text-slate-700 hover:border-brand-600 hover:text-brand-600 transition">
+            Ver cómo funciona
+          </a>
+        </div>
+        <div class="mt-8 flex items-center gap-6 text-sm text-slate-500">
+          <div><span class="block text-2xl font-extrabold text-brand-900">+38%</span> llamadas atendidas</div>
+          <div><span class="block text-2xl font-extrabold text-brand-900">24/7</span> sin descanso</div>
+          <div><span class="block text-2xl font-extrabold text-brand-900">&lt;1s</span> en responder</div>
+        </div>
+      </div>
+
+      <!-- Tarjeta visual: simulación de llamada -->
+      <div class="relative">
+        <div class="rounded-3xl bg-white shadow-2xl shadow-brand-900/10 border border-slate-100 p-6">
+          <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+            <span class="h-10 w-10 rounded-full bg-accent-500/15 flex items-center justify-center text-accent-600 text-xl">📞</span>
+            <div>
+              <p class="font-semibold text-slate-800">Llamada entrante</p>
+              <p class="text-xs text-slate-400">Recepcionista IA · en línea</p>
+            </div>
+            <span class="ml-auto text-xs font-semibold text-accent-600 bg-accent-500/10 px-2 py-1 rounded-full">Atendida</span>
+          </div>
+          <div class="space-y-3 py-4 text-sm">
+            <div class="max-w-[80%] rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-2 text-slate-700">Hola, gracias por llamar. ¿Qué le gustaría pedir hoy?</div>
+            <div class="ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-brand-600 px-4 py-2 text-white">Quiero dos pizzas grandes y una bebida.</div>
+            <div class="max-w-[80%] rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-2 text-slate-700">¡Perfecto! Dos pizzas grandes y una bebida. ¿Me confirma su dirección?</div>
+          </div>
+          <div class="mt-2 rounded-xl bg-accent-500/10 px-4 py-3 text-sm text-accent-600 font-medium flex items-center gap-2">
+            ✓ Pedido registrado y enviado al dueño por WhatsApp
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOLOR / PROBLEMA ===== -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-5 text-center">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-brand-900">Cada llamada perdida es dinero que se va a la competencia</h2>
+      <p class="mt-3 text-slate-600 max-w-2xl mx-auto">Estás ocupado atendiendo, en la cocina o con las manos llenas. El teléfono suena y nadie contesta. Tu cliente llama al siguiente negocio.</p>
+      <div class="mt-10 grid sm:grid-cols-3 gap-5 text-left">
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm">
+          <p class="text-3xl">⏰</p>
+          <h3 class="mt-3 font-bold text-slate-800">Hora punta = caos</h3>
+          <p class="mt-1 text-sm text-slate-500">Cuando más pedidos entran, es cuando más llamadas se pierden.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm">
+          <p class="text-3xl">🌙</p>
+          <h3 class="mt-3 font-bold text-slate-800">Fuera de horario</h3>
+          <p class="mt-1 text-sm text-slate-500">Clientes que llaman de noche o domingo no encuentran a nadie.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-100 p-6 shadow-sm">
+          <p class="text-3xl">💸</p>
+          <h3 class="mt-3 font-bold text-slate-800">Plata sobre la mesa</h3>
+          <p class="mt-1 text-sm text-slate-500">10 llamadas perdidas al mes pueden ser cientos de miles de pesos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS ===== -->
+  <section id="servicios" class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-brand-900">Un servicio, dos súper poderes</h2>
+        <p class="mt-3 text-slate-600">Te entregamos todo listo y funcionando. Tú solo atiendes a tus clientes.</p>
+      </div>
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="rounded-3xl bg-white p-8 shadow-lg shadow-slate-200/60 border border-slate-100">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600 text-white text-2xl">🌐</span>
+          <h3 class="mt-5 text-xl font-bold text-brand-900">Página web que convierte</h3>
+          <p class="mt-2 text-slate-600">Diseño profesional, rápido y optimizado para que el visitante se vuelva cliente.</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Diseño moderno y adaptado a celular</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Botones de pedido y WhatsApp</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Optimizada para Google (SEO local)</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Lista en días, no en meses</li>
+          </ul>
+        </div>
+        <div class="rounded-3xl bg-white p-8 shadow-lg shadow-slate-200/60 border border-slate-100">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500 text-white text-2xl">🤖</span>
+          <h3 class="mt-5 text-xl font-bold text-brand-900">Recepcionista IA 24/7</h3>
+          <p class="mt-2 text-slate-600">Una voz natural que atiende cada llamada, toma el pedido y registra todo automáticamente.</p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Contesta el 100% de las llamadas</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Toma pedidos y agenda citas</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Te avisa al instante por WhatsApp</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Transfiere a una persona si hace falta</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CÓMO FUNCIONA ===== -->
+  <section id="como-funciona" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-brand-900">Cómo funciona</h2>
+        <p class="mt-3 text-slate-600">Del teléfono a tu WhatsApp en segundos. Sin que tú muevas un dedo.</p>
+      </div>
+      <div class="mt-14 grid md:grid-cols-4 gap-6">
+        <div class="relative text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-600 font-extrabold text-xl flex items-center justify-center">1</div>
+          <h3 class="mt-4 font-bold text-slate-800">El cliente llama</h3>
+          <p class="mt-1 text-sm text-slate-500">A tu número de siempre. La IA contesta al instante.</p>
+        </div>
+        <div class="relative text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-600 font-extrabold text-xl flex items-center justify-center">2</div>
+          <h3 class="mt-4 font-bold text-slate-800">La IA conversa</h3>
+          <p class="mt-1 text-sm text-slate-500">Toma el pedido o agenda la cita de forma natural.</p>
+        </div>
+        <div class="relative text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-600 font-extrabold text-xl flex items-center justify-center">3</div>
+          <h3 class="mt-4 font-bold text-slate-800">Se registra todo</h3>
+          <p class="mt-1 text-sm text-slate-500">El pedido entra a tu base de datos y panel automáticamente.</p>
+        </div>
+        <div class="relative text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-brand-50 text-brand-600 font-extrabold text-xl flex items-center justify-center">4</div>
+          <h3 class="mt-4 font-bold text-slate-800">Te avisamos</h3>
+          <p class="mt-1 text-sm text-slate-500">Recibes el pedido al instante por WhatsApp. Listo para preparar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRECIOS ===== -->
+  <section id="precios" class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-brand-900">Planes claros, sin letra chica</h2>
+        <p class="mt-3 text-slate-600">Inversión inicial + una mensualidad. El primer mes incluye configuración completa.</p>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6 items-stretch">
+        <!-- Starter -->
+        <div class="rounded-3xl bg-white p-8 border border-slate-100 shadow-sm flex flex-col">
+          <h3 class="font-bold text-lg text-slate-800">Starter</h3>
+          <p class="text-sm text-slate-500">Para arrancar con lo esencial.</p>
+          <p class="mt-5 text-3xl font-extrabold text-brand-900">$390.000<span class="text-base font-medium text-slate-400"> setup</span></p>
+          <p class="text-sm text-slate-500">+ $89.000 / mes</p>
+          <ul class="mt-6 space-y-2 text-sm text-slate-600 flex-1">
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Web de 1 página (landing)</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Recepcionista IA básica</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Aviso por WhatsApp</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> 500 minutos incluidos</li>
+          </ul>
+          <a href="#contacto" class="mt-6 rounded-full border border-brand-600 px-5 py-3 text-center font-semibold text-brand-600 hover:bg-brand-50 transition">Elegir Starter</a>
+        </div>
+        <!-- Pro (destacado) -->
+        <div class="rounded-3xl bg-brand-900 p-8 shadow-xl shadow-brand-900/30 flex flex-col relative">
+          <span class="absolute top-5 right-5 text-xs font-bold bg-accent-500 text-white px-3 py-1 rounded-full">MÁS ELEGIDO</span>
+          <h3 class="font-bold text-lg text-white">Pro</h3>
+          <p class="text-sm text-brand-100">El equilibrio perfecto.</p>
+          <p class="mt-5 text-3xl font-extrabold text-white">$790.000<span class="text-base font-medium text-brand-200"> setup</span></p>
+          <p class="text-sm text-brand-100">+ $159.000 / mes</p>
+          <ul class="mt-6 space-y-2 text-sm text-brand-50 flex-1">
+            <li class="flex gap-2"><span class="text-accent-400">✓</span> Web profesional (varias secciones)</li>
+            <li class="flex gap-2"><span class="text-accent-400">✓</span> Recepcionista IA avanzada</li>
+            <li class="flex gap-2"><span class="text-accent-400">✓</span> Integración con CRM / agenda</li>
+            <li class="flex gap-2"><span class="text-accent-400">✓</span> 1.500 minutos incluidos</li>
+            <li class="flex gap-2"><span class="text-accent-400">✓</span> Panel de pedidos en vivo</li>
+          </ul>
+          <a href="#contacto" class="mt-6 rounded-full bg-accent-500 px-5 py-3 text-center font-semibold text-white hover:bg-accent-600 transition">Elegir Pro</a>
+        </div>
+        <!-- Premium -->
+        <div class="rounded-3xl bg-white p-8 border border-slate-100 shadow-sm flex flex-col">
+          <h3 class="font-bold text-lg text-slate-800">Premium</h3>
+          <p class="text-sm text-slate-500">Máximo rendimiento y soporte.</p>
+          <p class="mt-5 text-3xl font-extrabold text-brand-900">$1.490.000<span class="text-base font-medium text-slate-400"> setup</span></p>
+          <p class="text-sm text-slate-500">+ $299.000 / mes</p>
+          <ul class="mt-6 space-y-2 text-sm text-slate-600 flex-1">
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Web completa + e-commerce básico</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> IA multi-flujo (pedidos + soporte)</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Reportes mensuales</li>
+            <li class="flex gap-2"><span class="text-accent-500">✓</span> Minutos ampliados + soporte prioritario</li>
+          </ul>
+          <a href="#contacto" class="mt-6 rounded-full border border-brand-600 px-5 py-3 text-center font-semibold text-brand-600 hover:bg-brand-50 transition">Elegir Premium</a>
+        </div>
+      </div>
+      <p class="mt-6 text-center text-xs text-slate-400">Precios de referencia en CLP. Ajustables según el tamaño y necesidades del negocio.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-5">
+      <h2 class="text-3xl font-extrabold text-brand-900 text-center">Preguntas frecuentes</h2>
+      <div class="mt-10 space-y-3" id="faq-list">
+        <details class="group rounded-2xl border border-slate-100 p-5">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿La IA suena como robot?<span class="text-brand-600 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-3 text-sm text-slate-600">No. Usamos voces neuronales muy naturales. La mayoría de las personas no nota la diferencia, y siempre podemos transferir a una persona real.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-100 p-5">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Tengo que cambiar mi número?<span class="text-brand-600 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-3 text-sm text-slate-600">No. Mantienes tu número actual; solo redirigimos las llamadas a la IA cuando no contestas o las 24/7, como prefieras.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-100 p-5">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Cuánto tarda en estar listo?<span class="text-brand-600 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-3 text-sm text-slate-600">Entre 3 y 10 días hábiles según el plan. Te entregamos todo configurado y funcionando.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-100 p-5">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold text-slate-800">¿Y si no me gusta?<span class="text-brand-600 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-3 text-sm text-slate-600">Te damos 30 días de garantía. Si la IA no te ayuda a captar más clientes, te devolvemos la configuración.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO / CTA ===== -->
+  <section id="contacto" class="py-20 bg-gradient-to-br from-brand-700 to-brand-900">
+    <div class="max-w-3xl mx-auto px-5 text-center text-white">
+      <h2 class="text-3xl font-extrabold">Agenda tu demo gratis</h2>
+      <p class="mt-3 text-brand-100">Te montamos una recepcionista IA con el nombre de tu negocio para que la pruebes. Sin compromiso.</p>
+      <form id="lead-form" class="mt-8 bg-white rounded-3xl p-6 text-left text-slate-800 shadow-2xl">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Tu nombre</label>
+            <input name="nombre" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="Ej: Camila Rojas" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Negocio</label>
+            <input name="negocio" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="Ej: Pizzería Don Beto" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Teléfono / WhatsApp</label>
+            <input name="telefono" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-100 outline-none" placeholder="+56 9 ..." />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Rubro</label>
+            <select name="rubro" class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-600 focus:ring-2 focus:ring-brand-100 outline-none">
+              <option>Restaurante / Comida</option>
+              <option>Clínica / Salud</option>
+              <option>Cerrajero / Oficio</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="mt-5 w-full rounded-full bg-brand-600 px-6 py-3.5 font-semibold text-white hover:bg-brand-700 transition">
+          Quiero mi demo gratis
+        </button>
+        <p id="form-msg" class="mt-3 text-center text-sm text-accent-600 font-medium hidden">¡Gracias! Te contactaremos muy pronto. ✓</p>
+      </form>
+      <p class="mt-5 text-sm text-brand-100">O escríbenos directo por WhatsApp:
+        <a href="https://wa.me/56900000000" class="underline font-semibold">+56 9 0000 0000</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-brand-900 text-brand-100 py-10">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 font-extrabold text-white">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600">N</span> NexVoz
+      </div>
+      <p class="text-sm">© <span id="year"></span> NexVoz · Webs + Recepcionistas IA para PYMEs en Chile</p>
+      <div class="flex gap-4 text-sm">
+        <a href="#servicios" class="hover:text-white">Servicios</a>
+        <a href="#precios" class="hover:text-white">Precios</a>
+        <a href="#contacto" class="hover:text-white">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

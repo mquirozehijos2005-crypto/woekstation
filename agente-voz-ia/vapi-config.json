@@ -1,0 +1,96 @@
+{
+  "_comentario": "Configuración de ejemplo para un asistente de Vapi. Puedes crear el asistente desde el dashboard de Vapi o vía API enviando este objeto a POST https://api.vapi.ai/assistant con tu API key. Reemplaza los valores entre <...>.",
+
+  "name": "Recepcionista IA - Pizzeria Don Beto",
+  "firstMessage": "Hola, gracias por llamar a Pizzería Don Beto, te habla Sofía. ¿Qué te gustaría pedir hoy?",
+  "firstMessageMode": "assistant-speaks-first",
+
+  "transcriber": {
+    "provider": "deepgram",
+    "model": "nova-2",
+    "language": "es"
+  },
+
+  "model": {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "temperature": 0.5,
+    "messages": [
+      {
+        "role": "system",
+        "content": "PEGA AQUÍ EL CONTENIDO DE prompt-sistema.md (el bloque entre comillas)."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "registrar_pedido",
+          "description": "Registra el pedido confirmado del cliente. Llamar SOLO después de que el cliente confirme explícitamente todos los datos.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "cliente_nombre": { "type": "string", "description": "Nombre del cliente" },
+              "cliente_telefono": { "type": "string", "description": "Teléfono de contacto" },
+              "tipo_entrega": { "type": "string", "enum": ["delivery", "retiro"], "description": "Si es delivery o retiro en local" },
+              "direccion": { "type": "string", "description": "Dirección completa de entrega (vacío si es retiro)" },
+              "items": {
+                "type": "array",
+                "description": "Lista de productos pedidos",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "nombre": { "type": "string" },
+                    "cantidad": { "type": "integer" },
+                    "precio_unitario": { "type": "integer", "description": "Precio en CLP" }
+                  },
+                  "required": ["nombre", "cantidad"]
+                }
+              },
+              "total_clp": { "type": "integer", "description": "Total del pedido en pesos chilenos" },
+              "forma_pago": { "type": "string", "enum": ["efectivo", "tarjeta", "transferencia"] },
+              "notas": { "type": "string", "description": "Indicaciones especiales del cliente" }
+            },
+            "required": ["cliente_nombre", "cliente_telefono", "tipo_entrega", "items", "total_clp"]
+          }
+        },
+        "server": {
+          "url": "<URL_DE_TU_BACKEND>/api/pedido",
+          "secret": "<TOKEN_SECRETO_COMPARTIDO>"
+        }
+      },
+      {
+        "type": "transferCall",
+        "destinations": [
+          {
+            "type": "number",
+            "number": "<NUMERO_DEL_DUENO_+569XXXXXXXX>",
+            "message": "Te transfiero con una persona del local, un momento por favor."
+          }
+        ],
+        "function": {
+          "name": "transferir_a_humano",
+          "description": "Transfiere la llamada a una persona real cuando el cliente lo pide o hay un reclamo serio."
+        }
+      }
+    ]
+  },
+
+  "voice": {
+    "provider": "11labs",
+    "voiceId": "<ID_DE_VOZ_EN_ESPANOL>",
+    "stability": 0.5,
+    "similarityBoost": 0.75
+  },
+
+  "server": {
+    "url": "<URL_DE_TU_BACKEND>/api/vapi-webhook",
+    "secret": "<TOKEN_SECRETO_COMPARTIDO>"
+  },
+
+  "endCallMessage": "¡Listo! Tu pedido ya está en cocina. Muchas gracias por preferirnos.",
+  "endCallPhrases": ["adiós", "chao", "eso sería todo", "muchas gracias"],
+  "silenceTimeoutSeconds": 20,
+  "maxDurationSeconds": 600,
+  "backgroundSound": "office"
+}

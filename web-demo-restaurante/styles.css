@@ -1,0 +1,16 @@
+/* Estilos demo restaurante (complemento a Tailwind CDN) */
+html { scroll-behavior: smooth; }
+
+.item-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+}
+.item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -10px rgba(190,18,60,.35);
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #be123c;
+  outline-offset: 2px;
+}

@@ -1,0 +1,24 @@
+/* Estilos personalizados que complementan a Tailwind (CDN) */
+
+html { scroll-behavior: smooth; }
+
+/* Oculta el indicador "+" duplicado de los <details> nativos */
+summary::-webkit-details-marker { display: none; }
+summary { list-style: none; }
+
+/* Animación suave de aparición para secciones */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mejora foco accesible */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}

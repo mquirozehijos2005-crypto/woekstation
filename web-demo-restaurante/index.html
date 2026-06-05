@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizzería Don Beto · Pizzas artesanales con delivery</title>
+  <meta name="description" content="Las mejores pizzas artesanales de la comuna. Pide por teléfono o web. Delivery rápido." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { tomate:{500:'#e11d48',600:'#be123c',700:'#9f1239'}, masa:{50:'#fff7ed',100:'#ffedd5',900:'#431407'} },
+        fontFamily: { sans:['Poppins','system-ui','sans-serif'] }
+      } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans text-masa-900 bg-masa-50">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur shadow-sm">
+    <nav class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#" class="font-extrabold text-xl text-tomate-600">🍕 Don Beto</a>
+      <div class="hidden sm:flex gap-6 text-sm font-medium">
+        <a href="#menu" class="hover:text-tomate-600">Menú</a>
+        <a href="#nosotros" class="hover:text-tomate-600">Nosotros</a>
+        <a href="#pedir" class="hover:text-tomate-600">Pedir</a>
+      </div>
+      <a href="tel:+56900000000" class="rounded-full bg-tomate-600 text-white px-4 py-2 text-sm font-semibold hover:bg-tomate-700">📞 Llamar y pedir</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative">
+    <div class="max-w-5xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-block bg-tomate-500/10 text-tomate-600 text-xs font-bold px-3 py-1 rounded-full">DELIVERY EN 30 MIN</span>
+        <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">Pizzas artesanales <span class="text-tomate-600">hechas a mano</span></h1>
+        <p class="mt-4 text-lg text-masa-900/70">Masa madre fermentada 48 horas, ingredientes frescos y harto sabor. Pide por teléfono y nuestra recepcionista IA toma tu pedido al tiro.</p>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="tel:+56900000000" class="rounded-full bg-tomate-600 text-white px-7 py-3.5 text-center font-semibold hover:bg-tomate-700 shadow-lg shadow-tomate-600/20">📞 Pedir por teléfono</a>
+          <a href="#menu" class="rounded-full border border-masa-900/20 px-7 py-3.5 text-center font-semibold hover:border-tomate-600 hover:text-tomate-600">Ver el menú</a>
+        </div>
+        <div class="mt-7 flex gap-6 text-sm text-masa-900/60">
+          <div>⭐ 4.9 · 320 reseñas</div>
+          <div>🛵 Delivery propio</div>
+        </div>
+      </div>
+      <div class="aspect-square rounded-3xl bg-gradient-to-br from-tomate-500 to-tomate-700 shadow-2xl flex items-center justify-center text-[10rem]">🍕</div>
+    </div>
+  </section>
+
+  <!-- MENÚ -->
+  <section id="menu" class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-5">
+      <h2 class="text-3xl font-extrabold text-center">Nuestro menú</h2>
+      <p class="text-center text-masa-900/60 mt-2">Toca un producto para agregarlo a tu pedido.</p>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="menu-grid">
+        <!-- Las tarjetas se generan con JS desde el menú -->
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="py-16">
+    <div class="max-w-4xl mx-auto px-5 text-center">
+      <h2 class="text-3xl font-extrabold">Sobre Don Beto</h2>
+      <p class="mt-4 text-masa-900/70">Hace 12 años que hacemos las pizzas del barrio con la misma receta de siempre. Familia, fuego y buena masa. Ahora también atendemos tus llamadas 24/7 con una recepcionista inteligente para que nunca te quedes sin tu pizza.</p>
+    </div>
+  </section>
+
+  <!-- PEDIR / CARRITO -->
+  <section id="pedir" class="py-16 bg-tomate-600 text-white">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="text-3xl font-extrabold">Haz tu pedido</h2>
+      <p class="mt-2 text-white/80">Llama y nuestra IA lo toma al instante, o arma tu pedido aquí y envíalo por WhatsApp.</p>
+
+      <div class="mt-8 bg-white text-masa-900 rounded-3xl p-6 text-left shadow-xl">
+        <h3 class="font-bold text-lg">Tu pedido</h3>
+        <ul id="carrito" class="mt-4 space-y-2 text-sm min-h-[60px]">
+          <li class="text-masa-900/40">Aún no has agregado nada.</li>
+        </ul>
+        <div class="mt-4 pt-4 border-t flex justify-between font-bold text-lg">
+          <span>Total</span><span id="total">$0</span>
+        </div>
+        <a id="btn-whatsapp" href="#" class="mt-5 block rounded-full bg-green-500 text-white px-6 py-3.5 text-center font-semibold hover:bg-green-600">Enviar pedido por WhatsApp</a>
+        <a href="tel:+56900000000" class="mt-3 block rounded-full border border-tomate-600 text-tomate-600 px-6 py-3 text-center font-semibold hover:bg-tomate-50">📞 Prefiero llamar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-masa-900 text-masa-100 py-10">
+    <div class="max-w-5xl mx-auto px-5 text-center text-sm">
+      <p class="font-extrabold text-white text-lg">🍕 Pizzería Don Beto</p>
+      <p class="mt-2">Av. Siempre Viva 123, Santiago · Abierto 12:00 a 23:30</p>
+      <p class="mt-1">📞 +56 9 0000 0000</p>
+      <p class="mt-4 text-masa-100/50">Web demo creada con NexVoz · Recepcionista IA 24/7</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

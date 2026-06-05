@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Pedidos · NexVoz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+  <header class="bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+      <h1 class="font-extrabold text-lg">📋 Panel de Pedidos</h1>
+      <div class="flex items-center gap-3 text-sm">
+        <span id="estado" class="text-emerald-400">● En vivo</span>
+        <button id="refrescar" class="rounded-full bg-slate-700 px-3 py-1.5 hover:bg-slate-600">Refrescar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-5 py-8">
+    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+      <div class="rounded-2xl bg-white p-5 shadow-sm">
+        <p class="text-sm text-slate-500">Pedidos hoy</p>
+        <p id="kpi-hoy" class="text-3xl font-extrabold text-slate-900">0</p>
+      </div>
+      <div class="rounded-2xl bg-white p-5 shadow-sm">
+        <p class="text-sm text-slate-500">Total pedidos</p>
+        <p id="kpi-total" class="text-3xl font-extrabold text-slate-900">0</p>
+      </div>
+      <div class="rounded-2xl bg-white p-5 shadow-sm">
+        <p class="text-sm text-slate-500">Ventas registradas</p>
+        <p id="kpi-ventas" class="text-3xl font-extrabold text-emerald-600">$0</p>
+      </div>
+    </div>
+
+    <h2 class="font-bold text-lg mb-3">Pedidos recientes</h2>
+    <div id="lista-pedidos" class="space-y-3">
+      <p class="text-slate-400">Cargando…</p>
+    </div>
+
+    <h2 class="font-bold text-lg mt-10 mb-3">Leads (web)</h2>
+    <div id="lista-leads" class="space-y-3">
+      <p class="text-slate-400">Cargando…</p>
+    </div>
+  </main>
+
+  <script>
+    const clp = (n) => '$' + Number(n || 0).toLocaleString('es-CL');
+
+    async function cargar() {
+      try {
+        const r = await fetch('/api/pedidos');
+        const { pedidos = [], leads = [] } = await r.json();
+        document.getElementById('estado').textContent = '● En vivo';
+        document.getElementById('estado').className = 'text-emerald-400';
+
+        // KPIs
+        const hoy = new Date().toDateString();
+        const pedidosHoy = pedidos.filter(p => new Date(p.fecha).toDateString() === hoy);
+        document.getElementById('kpi-hoy').textContent = pedidosHoy.length;
+        document.getElementById('kpi-total').textContent = pedidos.length;
+        document.getElementById('kpi-ventas').textContent = clp(pedidos.reduce((s,p)=>s+(p.total_clp||0),0));
+
+        // Pedidos
+        const cont = document.getElementById('lista-pedidos');
+        cont.innerHTML = pedidos.length ? pedidos.map(p => `
+          <div class="rounded-2xl bg-white p-5 shadow-sm">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-bold">${p.cliente_nombre || 'Sin nombre'} <span class="text-xs font-normal text-slate-400">${p.id}</span></p>
+                <p class="text-sm text-slate-500">${p.cliente_telefono || ''} · ${p.tipo_entrega || ''} ${p.direccion ? '· ' + p.direccion : ''}</p>
+              </div>
+              <span class="text-emerald-600 font-extrabold">${clp(p.total_clp)}</span>
+            </div>
+            <ul class="mt-2 text-sm text-slate-600">
+              ${(p.items||[]).map(i => `<li>• ${i.cantidad||1}x ${i.nombre}</li>`).join('')}
+            </ul>
+            <p class="mt-2 text-xs text-slate-400">${new Date(p.fecha).toLocaleString('es-CL')} · pago: ${p.forma_pago||'s/n'}</p>
+          </div>
+        `).join('') : '<p class="text-slate-400">Aún no hay pedidos. Haz una llamada de prueba.</p>';
+
+        // Leads
+        const contL = document.getElementById('lista-leads');
+        contL.innerHTML = leads.length ? leads.map(l => `
+          <div class="rounded-2xl bg-white p-4 shadow-sm flex justify-between items-center">
+            <div>
+              <p class="font-semibold">${l.nombre || 's/n'} — ${l.negocio || ''}</p>
+              <p class="text-sm text-slate-500">${l.telefono || ''} · ${l.rubro || ''}</p>
+            </div>
+            <span class="text-xs text-slate-400">${new Date(l.fecha).toLocaleString('es-CL')}</span>
+          </div>
+        `).join('') : '<p class="text-slate-400">Sin leads todavía.</p>';
+      } catch (e) {
+        document.getElementById('estado').textContent = '● Sin conexión';
+        document.getElementById('estado').className = 'text-red-400';
+      }
+    }
+
+    document.getElementById('refrescar').addEventListener('click', cargar);
+    cargar();
+    setInterval(cargar, 8000); // auto-refresco cada 8s
+  </script>
+</body>
+</html>
