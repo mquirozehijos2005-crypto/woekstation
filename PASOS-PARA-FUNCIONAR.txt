@@ -1,0 +1,227 @@
+================================================================================
+NEXVOZ — GUIA PASO A PASO PARA DEJARLO FUNCIONANDO AL 100%
+Recepcion con IA 24/7 + sitios web que convierten (para vender a empresas)
+================================================================================
+
+Como leer esta guia:
+- Sigue las FASES en orden. Cada una tiene pasos numerados.
+- [ ] son casillas para que vayas marcando lo que completas.
+- Lo unico que NO puedo dejar encendido por ti es el agente de voz por telefono,
+  porque requiere TUS cuentas (Vapi + Twilio) con tarjeta. Todo lo demas ya funciona.
+
+Tu modelo: TU eres la agencia (NexVoz). Le instalas y cobras el servicio a
+empresas cliente (restaurantes, comida rapida, farmacias, clinicas, oficios...).
+
+--------------------------------------------------------------------------------
+RESUMEN DE COMO FUNCIONA (la imagen mental)
+--------------------------------------------------------------------------------
+Cliente llama por telefono
+   -> Numero (Twilio)
+   -> Agente de voz IA (Vapi) conversa y toma los datos
+   -> Envia los datos a TU servidor (este proyecto)
+   -> El servidor guarda el registro y avisa al WhatsApp del dueno del negocio
+   -> Todo queda visible en el Panel (/dashboard)
+
+Lo mismo pasa con los formularios de la web: caen en el mismo panel.
+
+================================================================================
+FASE 0 — LO QUE NECESITAS ANTES DE EMPEZAR
+================================================================================
+[ ] Un computador con internet.
+[ ] Instalar Node.js version 18 o superior (https://nodejs.org -> boton LTS).
+[ ] Una cuenta de GitHub (ya tienes el repo: woekstation).
+[ ] Crear estas cuentas (gratis para empezar):
+    [ ] Vapi          -> https://vapi.ai         (agente de voz)
+    [ ] Twilio        -> https://twilio.com       (numero de telefono / WhatsApp)
+    [ ] OpenAI        -> https://platform.openai.com (la "inteligencia" del agente)
+    [ ] Render        -> https://render.com       (para publicar el sistema gratis)
+    [ ] (Opcional) ElevenLabs -> voz mas natural en espanol
+
+COSTOS APROXIMADOS (referencia):
+- Vapi + OpenAI + voz: ~USD 0,08 a 0,15 por minuto de llamada (~$80 a $150 CLP/min).
+- Numero Twilio: ~USD 1 a 2 al mes + uso.
+- Render plan gratis: $0 (se "duerme" si no hay trafico; plan pago ~USD 7/mes lo
+  mantiene siempre activo, recomendado para clientes reales).
+- TU le cobras al cliente: setup + mensualidad + minutos con margen
+  (ver documentos-negocio/precios-y-paquetes-CLP.md).
+
+================================================================================
+FASE 1 — PROBAR TODO EN TU COMPUTADOR (10 minutos)
+================================================================================
+1. Descarga el proyecto (si no lo tienes local):
+   - En la pagina del repo en GitHub: boton verde "Code" -> "Download ZIP",
+     o con git:  git clone https://github.com/mquirozehijos2005-crypto/woekstation
+2. Abre una terminal DENTRO de la carpeta del proyecto.
+3. Ejecuta:   npm start
+4. Abre en tu navegador:
+   [ ] http://localhost:3000/             (tu sitio de agencia, para vender)
+   [ ] http://localhost:3000/restaurante  (demo restaurante)
+   [ ] http://localhost:3000/comida-rapida(demo comida rapida)
+   [ ] http://localhost:3000/farmacia     (demo farmacia)
+   [ ] http://localhost:3000/clinica      (demo clinica)
+   [ ] http://localhost:3000/cerrajero    (demo oficios)
+   [ ] http://localhost:3000/dashboard    (panel de gestion en vivo)
+5. Prueba un formulario (ej. arma un pedido en /restaurante y envialo).
+   Debe aparecer en /dashboard. Asi confirmas que todo conversa entre si.
+   NOTA: no necesitas "npm install"; el servidor no usa dependencias externas.
+
+================================================================================
+FASE 2 — PUBLICAR EL SISTEMA ONLINE (Render)
+================================================================================
+Esto le da una direccion publica (URL) que el agente de voz podra usar.
+1. Entra a https://render.com y crea una cuenta (puedes entrar con GitHub).
+2. New + -> "Web Service" -> conecta tu repositorio woekstation.
+3. Configura:
+   - Runtime: Node
+   - Build Command: (dejar vacio)
+   - Start Command:  node server.js
+4. En "Environment" agrega las variables (ver FASE 3). Como minimo: WEBHOOK_SECRET.
+5. Crea el servicio. Render te dara una URL tipo:
+   https://nexvoz-xxxx.onrender.com
+   [ ] Anota esta URL. La llamaremos  URL_PUBLICA.
+6. Abre URL_PUBLICA en el navegador para confirmar que carga.
+
+(Alternativa para probar rapido sin publicar: en tu PC corre "npm start" y en otra
+ terminal "npx ngrok http 3000"; ngrok te da una URL_PUBLICA temporal.)
+
+================================================================================
+FASE 3 — NOTIFICACIONES AL DUENO DEL NEGOCIO
+================================================================================
+Asi el dueno recibe cada pedido/cita/urgencia al instante. Elige UNA opcion.
+
+OPCION A (mas facil): TELEGRAM
+1. En Telegram, habla con @BotFather -> /newbot -> copia el TOKEN.
+2. Habla con @userinfobot -> copia tu "Id" (numero).
+3. En las variables de entorno (Render o archivo .env) pon:
+   TELEGRAM_BOT_TOKEN=el_token
+   TELEGRAM_CHAT_ID=el_id
+
+OPCION B: WHATSAPP (via Twilio)
+   TWILIO_ACCOUNT_SID=...
+   TWILIO_AUTH_TOKEN=...
+   TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+   DUENO_WHATSAPP_TO=whatsapp:+569XXXXXXXX   (el numero del dueno del negocio)
+
+VARIABLE DE SEGURIDAD (siempre):
+   WEBHOOK_SECRET=invente-un-texto-largo-y-secreto
+
+Para correr local con un archivo .env:  node --env-file=.env server.js
+(Usa el archivo .env.example como plantilla. NUNCA subas el .env real a GitHub.)
+
+================================================================================
+FASE 4 — MONTAR LA RECEPCIONISTA IA (Vapi)
+================================================================================
+1. Entra a https://vapi.ai -> "Assistants" -> "Create Assistant".
+2. SYSTEM PROMPT: copia y pega el guion segun el rubro (carpeta agente-voz-ia):
+   - Restaurante / comida rapida -> prompt-sistema.md
+   - Farmacia                    -> prompt-farmacia.md
+   - Clinica / salud             -> prompt-clinica.md
+   - Oficios / cerrajero         -> prompt-cerrajero.md
+   Reemplaza lo que esta entre [CORCHETES] (nombre, menu, horario, etc.).
+3. Model: OpenAI gpt-4o.   Transcriber: Deepgram (idioma: es).   Voice: una voz en espanol.
+4. FIRST MESSAGE: el saludo inicial (esta al final de cada guion).
+5. TOOLS / FUNCTIONS: crea la herramienta segun el rubro y pon su Server URL:
+   - Pedidos (resto/comida/farmacia):  registrar_pedido   -> URL_PUBLICA/api/pedido
+   - Citas (clinica):                  agendar_cita       -> URL_PUBLICA/api/cita
+   - Urgencias (oficios):              registrar_urgencia -> URL_PUBLICA/api/urgencia
+   Copia los parametros (properties) desde agente-voz-ia/vapi-config.json.
+   En el campo "secret" del tool pon el MISMO valor de WEBHOOK_SECRET.
+   TIP: agrega un parametro "negocio" con el nombre del cliente para identificarlo.
+
+================================================================================
+FASE 5 — CONECTAR EL NUMERO DE TELEFONO (Twilio)
+================================================================================
+1. En Twilio compra un numero (Phone Numbers -> Buy a number).
+2. En Vapi -> "Phone Numbers" -> importa tu numero (pega SID y Auth Token de Twilio).
+3. Asocia ese numero a tu asistente.
+4. Para un cliente real: lo ideal es que el negocio mantenga su numero de siempre y
+   active el DESVIO de llamadas hacia el numero de la IA (siempre, o solo cuando no
+   contesta). Eso se configura con su compania telefonica.
+
+================================================================================
+FASE 6 — PRUEBA DE PUNTA A PUNTA (la prueba del 100%)
+================================================================================
+[ ] Llama al numero.
+[ ] Haz una interaccion real (un pedido / una cita / una urgencia).
+[ ] Verifica que llega la notificacion al WhatsApp/Telegram del dueno.
+[ ] Verifica que aparece en URL_PUBLICA/dashboard
+Si las 4 casillas estan OK: el sistema esta funcionando al 100%.
+
+================================================================================
+FASE 7 — CREAR Y ENTREGAR A UNA EMPRESA CLIENTE NUEVA
+================================================================================
+(Esto es lo que repites por cada empresa a la que le vendes.)
+1. Copia una carpeta de cliente parecida al rubro (ej. public/restaurante).
+2. Renombrala con el cliente (ej. public/pizzeria-luigi).
+3. Abre su config.js y edita SOLO sus datos:
+   - nombre, sector, emoji, color, colorOscuro
+   - telefono, whatsapp, direccion, horario
+   - tagline, descripcion, badge, stats
+   - accion:  pedido | cita | urgencia | lead
+   - catalogo: el menu/productos/servicios reales del cliente
+   (No tocas HTML ni codigo: el motor public/plantilla/template.js arma el sitio.)
+4. Pon el WhatsApp/Telegram del DUENO de ESA empresa en su .env.
+5. Crea su asistente en Vapi (FASE 4) y conecta su numero (FASE 5).
+6. Prueba de punta a punta (FASE 6).
+7. Firma propuesta + contrato y cobra:
+   - documentos-negocio/propuesta-comercial-plantilla.md
+   - documentos-negocio/contrato-servicio-plantilla.md
+   - documentos-negocio/precios-y-paquetes-CLP.md
+Detalle completo en: documentos-negocio/guia-entrega-cliente.md
+
+================================================================================
+CHECKLIST FINAL — "ESTA AL 100%"
+================================================================================
+[ ] El sistema esta publicado y la URL_PUBLICA carga.
+[ ] WEBHOOK_SECRET configurado (igual en el servidor y en el tool de Vapi).
+[ ] Notificaciones llegan (Telegram o WhatsApp).
+[ ] Asistente de Vapi creado con el guion del rubro.
+[ ] Herramienta (tool) apuntando a URL_PUBLICA/api/...
+[ ] Numero de telefono conectado.
+[ ] Llamada de prueba -> aviso recibido -> aparece en el panel.
+[ ] Propuesta y contrato listos para el cliente.
+
+================================================================================
+SOLUCION DE PROBLEMAS (lo mas comun)
+================================================================================
+- "La IA contesta pero no llega nada al panel":
+   La Server URL del tool esta mal. Debe ser URL_PUBLICA/api/pedido (o /cita, /urgencia),
+   NO localhost, y el servidor debe estar arriba.
+- "Responde 401 / secreto invalido":
+   El "secret" del tool no coincide con WEBHOOK_SECRET. Hazlos identicos.
+- "No llega WhatsApp/Telegram":
+   Faltan variables de entorno. Revisa FASE 3 y reinicia el servicio.
+- "Funciona en mi PC pero no publicado":
+   Usaste localhost en la Server URL. Usa la URL_PUBLICA.
+- "La IA inventa precios o productos":
+   El menu no esta dentro del System Prompt. Pegalo completo en el guion.
+- "El sitio del cliente sale en blanco":
+   Revisa que su config.js no tenga errores (comas, comillas) y que el archivo
+   se llame exactamente config.js dentro de su carpeta.
+
+================================================================================
+DONDE ESTA CADA COSA EN EL PROYECTO
+================================================================================
+server.js .................. el servidor (sirve las webs + la API)
+src/ ....................... logica del backend (datos, notificaciones, mensajes)
+public/index.html .......... tu sitio de agencia (para vender)
+public/dashboard.html ...... panel de gestion (muestra el negocio de cada registro)
+public/plantilla/ .......... el MOTOR de la plantilla (no se toca)
+public/<cliente>/config.js . los datos de cada empresa cliente (lo unico que editas)
+agente-voz-ia/ ............. guiones de la IA por rubro + guia de Vapi
+documentos-negocio/ ........ precios CLP, prospeccion, propuesta, contrato, entrega
+COMO-FUNCIONA.md ........... explicacion tecnica end-to-end
+marca/ ..................... logo e identidad de NexVoz
+
+================================================================================
+RESUMEN EN 6 LINEAS
+================================================================================
+1) Instala Node y corre "npm start" para probar local.
+2) Publica en Render -> obtienes URL_PUBLICA.
+3) Configura notificaciones (Telegram es lo mas facil) + WEBHOOK_SECRET.
+4) Crea el asistente en Vapi, pega el guion y apunta el tool a URL_PUBLICA/api/...
+5) Conecta un numero de Twilio (o desvio del numero del cliente).
+6) Llama, confirma que llega el aviso y aparece en el panel. Listo.
+
+NexVoz — Recepcion con IA 24/7 + webs que convierten.
+================================================================================

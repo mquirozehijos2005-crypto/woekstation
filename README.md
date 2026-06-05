@@ -9,6 +9,9 @@ Plataforma lista para lanzar una agencia que ofrece a PYMEs y negocios locales:
 Todo pensado para el mercado chileno (precios en **CLP**) y para arrancar **sin
 presupuesto publicitario**.
 
+> 📋 **¿Por dónde empiezo?** Lee **`PASOS-PARA-FUNCIONAR.txt`** (guía completa paso a
+> paso). Versión imprimible/PDF en `http://localhost:3000/guia` (botón "Guardar como PDF").
+
 ---
 
 ## ✅ Demo funcional en 1 comando

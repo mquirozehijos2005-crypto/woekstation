@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexVoz · Guía de puesta en marcha (imprimible / PDF)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%234F46E5'/%3E%3Cg stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='13' y1='22' x2='13' y2='34'/%3E%3Cline x1='20' y1='16' x2='20' y2='40'/%3E%3Cline x1='27' y1='21' x2='27' y2='35'/%3E%3Cline x1='34' y1='13' x2='34' y2='43'/%3E%3Cline x1='41' y1='24' x2='41' y2='32'/%3E%3C/g%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --c:#4f46e5; --cd:#0b1220; --soft:#eef2ff; }
+    * { box-sizing: border-box; }
+    body { font-family:'Inter',system-ui,sans-serif; color:#0f172a; margin:0; background:#f1f5f9; line-height:1.55; }
+    .page { max-width:820px; margin:0 auto; background:#fff; padding:48px 56px; }
+    h1 { font-size:26px; margin:0 0 4px; }
+    h2 { font-size:18px; margin:30px 0 10px; padding-top:16px; border-top:2px solid var(--soft); color:var(--c); }
+    h3 { font-size:14px; margin:18px 0 6px; }
+    p, li { font-size:13.5px; color:#334155; }
+    code { background:#f1f5f9; padding:2px 6px; border-radius:6px; font-size:12.5px; color:#be123c; }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .mark { width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,#4f46e5,#7c3aed); display:flex; align-items:center; justify-content:center; }
+    .lead { color:#64748b; font-size:13px; }
+    .box { background:var(--soft); border-radius:12px; padding:14px 18px; margin:14px 0; font-size:13px; }
+    .flow { background:var(--cd); color:#e2e8f0; border-radius:12px; padding:16px 18px; font-size:12.5px; white-space:pre-wrap; }
+    .check li { list-style:none; margin:4px 0; }
+    .check { padding-left:0; }
+    .check li::before { content:"☐  "; color:var(--c); font-weight:bold; }
+    ol li { margin:5px 0; }
+    table { width:100%; border-collapse:collapse; margin:10px 0; font-size:12.5px; }
+    th, td { border:1px solid #e2e8f0; padding:7px 9px; text-align:left; }
+    th { background:var(--soft); }
+    .toolbar { position:sticky; top:0; background:#0b1220; color:#fff; padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .btn { background:var(--c); color:#fff; border:none; padding:9px 18px; border-radius:999px; font-weight:600; cursor:pointer; font-size:13px; }
+    .muted { color:#94a3b8; font-size:12px; }
+    @media print {
+      .toolbar { display:none; }
+      body { background:#fff; }
+      .page { padding:0; max-width:none; }
+      h2 { break-after:avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>Guía de puesta en marcha · NexVoz</span>
+    <button class="btn" onclick="window.print()">🖨️ Guardar como PDF / Imprimir</button>
+  </div>
+
+  <div class="page">
+    <div class="logo">
+      <span class="mark"><svg width="20" height="20" viewBox="0 0 48 48"><g stroke="#fff" stroke-width="3.5" stroke-linecap="round"><line x1="13" y1="22" x2="13" y2="34"/><line x1="20" y1="16" x2="20" y2="40"/><line x1="27" y1="21" x2="27" y2="35"/><line x1="34" y1="13" x2="34" y2="43"/><line x1="41" y1="24" x2="41" y2="32"/></g></svg></span>
+      <strong style="font-size:20px;">Nex<span style="color:var(--c)">Voz</span></strong>
+    </div>
+    <h1 style="margin-top:14px;">Guía para dejarlo funcionando al 100%</h1>
+    <p class="lead">Recepción con IA 24/7 + sitios web que convierten · Modelo agencia → empresas cliente</p>
+
+    <div class="box">
+      <strong>Tu modelo:</strong> tú eres la agencia (NexVoz) y le instalas/cobras el servicio a
+      empresas cliente (restaurantes, comida rápida, farmacias, clínicas, oficios…).
+      Lo único que requiere tus cuentas con tarjeta es el agente de voz (Vapi + Twilio);
+      todo lo demás ya funciona.
+    </div>
+
+    <h2>Cómo funciona (la idea)</h2>
+    <div class="flow">Cliente llama por teléfono
+  → Número (Twilio)
+  → Agente de voz IA (Vapi) conversa y toma los datos
+  → Envía los datos a tu servidor (este proyecto)
+  → Se guarda y avisa al WhatsApp del dueño del negocio
+  → Todo queda visible en el Panel (/dashboard)</div>
+
+    <h2>Fase 0 · Lo que necesitas</h2>
+    <ul class="check">
+      <li>Computador con internet y <strong>Node.js 18+</strong> (nodejs.org).</li>
+      <li>Cuentas: <strong>Vapi</strong> (voz), <strong>Twilio</strong> (teléfono), <strong>OpenAI</strong> (IA), <strong>Render</strong> (publicar). Opcional: ElevenLabs (voz).</li>
+    </ul>
+    <p class="muted">Costos aprox: voz ~USD 0,08–0,15/min (~$80–$150 CLP/min) · número Twilio ~USD 1–2/mes · Render gratis (o ~USD 7/mes siempre activo).</p>
+
+    <h2>Fase 1 · Probar en tu computador (10 min)</h2>
+    <ol>
+      <li>Descarga el proyecto (GitHub → Code → Download ZIP, o <code>git clone</code>).</li>
+      <li>En una terminal dentro de la carpeta, ejecuta <code>npm start</code>.</li>
+      <li>Abre <code>http://localhost:3000/</code> y las demos: <code>/restaurante</code>, <code>/comida-rapida</code>, <code>/farmacia</code>, <code>/clinica</code>, <code>/cerrajero</code>, y el panel <code>/dashboard</code>.</li>
+      <li>Envía un formulario de prueba y verifica que aparece en el panel.</li>
+    </ol>
+    <p class="muted">No necesitas <code>npm install</code>: el servidor no usa dependencias externas.</p>
+
+    <h2>Fase 2 · Publicar online (Render)</h2>
+    <ol>
+      <li>Entra a render.com (puedes iniciar con GitHub).</li>
+      <li><strong>New + → Web Service</strong> → conecta el repositorio <code>woekstation</code>.</li>
+      <li>Start Command: <code>node server.js</code>. Build Command: vacío.</li>
+      <li>Agrega las variables de entorno (Fase 3). Mínimo <code>WEBHOOK_SECRET</code>.</li>
+      <li>Anota la URL que te da (la llamamos <strong>URL_PUBLICA</strong>).</li>
+    </ol>
+    <p class="muted">Para probar sin publicar: <code>npm start</code> + <code>npx ngrok http 3000</code> te da una URL_PUBLICA temporal.</p>
+
+    <h2>Fase 3 · Notificaciones al dueño</h2>
+    <h3>Opción A (fácil): Telegram</h3>
+    <ol>
+      <li>@BotFather → <code>/newbot</code> → copia el TOKEN.</li>
+      <li>@userinfobot → copia tu Id.</li>
+      <li>Variables: <code>TELEGRAM_BOT_TOKEN</code> y <code>TELEGRAM_CHAT_ID</code>.</li>
+    </ol>
+    <h3>Opción B: WhatsApp (Twilio)</h3>
+    <p><code>TWILIO_ACCOUNT_SID</code>, <code>TWILIO_AUTH_TOKEN</code>, <code>TWILIO_WHATSAPP_FROM</code>, <code>DUENO_WHATSAPP_TO</code> (el del dueño del negocio).</p>
+    <p>Siempre: <code>WEBHOOK_SECRET</code> = un texto largo y secreto. Local con <code>node --env-file=.env server.js</code>.</p>
+
+    <h2>Fase 4 · Montar la recepcionista IA (Vapi)</h2>
+    <ol>
+      <li>vapi.ai → Assistants → Create Assistant.</li>
+      <li><strong>System Prompt:</strong> pega el guion según el rubro (carpeta <code>agente-voz-ia/</code>) y reemplaza los [CORCHETES].</li>
+      <li>Model: OpenAI gpt-4o · Transcriber: Deepgram (es) · Voz en español.</li>
+      <li><strong>Tool / Function</strong> con su Server URL:</li>
+    </ol>
+    <table>
+      <tr><th>Rubro</th><th>Herramienta</th><th>Server URL</th></tr>
+      <tr><td>Restaurante / comida / farmacia</td><td>registrar_pedido</td><td>URL_PUBLICA/api/pedido</td></tr>
+      <tr><td>Clínica</td><td>agendar_cita</td><td>URL_PUBLICA/api/cita</td></tr>
+      <tr><td>Oficios / urgencias</td><td>registrar_urgencia</td><td>URL_PUBLICA/api/urgencia</td></tr>
+    </table>
+    <p class="muted">En "secret" del tool pon el mismo <code>WEBHOOK_SECRET</code>. Agrega un parámetro <code>negocio</code> con el nombre del cliente.</p>
+
+    <h2>Fase 5 · Conectar el número (Twilio)</h2>
+    <ol>
+      <li>Compra un número en Twilio.</li>
+      <li>En Vapi → Phone Numbers → impórtalo (SID + Auth Token) y asócialo al asistente.</li>
+      <li>Cliente real: que mantenga su número y active el <strong>desvío de llamadas</strong> a la IA.</li>
+    </ol>
+
+    <h2>Fase 6 · Prueba del 100%</h2>
+    <ul class="check">
+      <li>Llama al número y haz un pedido / cita / urgencia.</li>
+      <li>Llega la notificación al WhatsApp/Telegram del dueño.</li>
+      <li>Aparece en <code>URL_PUBLICA/dashboard</code>.</li>
+    </ul>
+
+    <h2>Fase 7 · Crear y entregar a una empresa cliente</h2>
+    <ol>
+      <li>Copia una carpeta de cliente parecida (ej. <code>public/restaurante</code>).</li>
+      <li>Renómbrala (ej. <code>public/pizzeria-luigi</code>).</li>
+      <li>Edita <strong>solo</strong> su <code>config.js</code>: nombre, colores, teléfono/WhatsApp, catálogo y <code>accion</code> (pedido / cita / urgencia / lead).</li>
+      <li>Pon el WhatsApp del dueño en su <code>.env</code>. Crea su asistente Vapi y conecta su número.</li>
+      <li>Firma propuesta + contrato y cobra (carpeta <code>documentos-negocio/</code>).</li>
+    </ol>
+
+    <h2>Checklist final “está al 100%”</h2>
+    <ul class="check">
+      <li>URL_PUBLICA carga.</li>
+      <li>WEBHOOK_SECRET igual en servidor y en el tool de Vapi.</li>
+      <li>Notificaciones llegan (Telegram o WhatsApp).</li>
+      <li>Asistente Vapi con el guion del rubro.</li>
+      <li>Tool apuntando a URL_PUBLICA/api/…</li>
+      <li>Número conectado.</li>
+      <li>Llamada de prueba → aviso recibido → aparece en el panel.</li>
+      <li>Propuesta y contrato listos.</li>
+    </ul>
+
+    <h2>Problemas comunes</h2>
+    <table>
+      <tr><th>Síntoma</th><th>Solución</th></tr>
+      <tr><td>La IA contesta pero no llega nada al panel</td><td>La Server URL del tool debe ser URL_PUBLICA/api/… (no localhost) y el servidor activo.</td></tr>
+      <tr><td>Responde 401 / secreto inválido</td><td>El "secret" del tool ≠ WEBHOOK_SECRET. Hazlos idénticos.</td></tr>
+      <tr><td>No llega WhatsApp/Telegram</td><td>Faltan variables de entorno. Revísalas y reinicia.</td></tr>
+      <tr><td>La IA inventa precios</td><td>Pega el menú completo dentro del System Prompt.</td></tr>
+      <tr><td>El sitio del cliente sale en blanco</td><td>Revisa comas/comillas en su config.js y que se llame exactamente config.js.</td></tr>
+    </table>
+
+    <p class="muted" style="margin-top:24px; border-top:1px solid #e2e8f0; padding-top:12px;">
+      NexVoz — Recepción con IA 24/7 + webs que convierten. Documento generado para uso interno de la agencia.
+    </p>
+  </div>
+</body>
+</html>
